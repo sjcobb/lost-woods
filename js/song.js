@@ -33,10 +33,10 @@ function Field(canvas) {
   });
 
   this.manIcon = new Image();
-  this.manIcon.src = 'res/man.svg';
+  this.manIcon.src = '/assets/man.svg';
 
   this.speakerIcon = new Image();
-  this.speakerIcon.src = 'res/speaker.svg';
+  this.speakerIcon.src = '/assets/speaker.svg';
 
   // Render the scene when the icon has loaded.
   var ctx = this;
@@ -129,7 +129,8 @@ Field.prototype.registerAngleChanged = function(callback) {
 // Super version: http://chromium.googlecode.com/svn/trunk/samples/audio/simple.html
 
 function PositionSample(el, context) {
-  var urls = ['sounds/position.wav'];
+  //var urls = ['sounds/position.wav'];
+  var urls = ['assets/gettysburg.mp3'];
   var sample = this;
   this.isPlaying = false;
   this.size = {width: 400, height: 300};
