@@ -1,0 +1,64 @@
+/*
+*** STYLES ***
+*/
+
+* {
+	box-sizing: border-box;
+}
+
+/*** FONTS ***/
+@font-face {
+    font-family: 'Pokemon GB';
+    src: local('Pokemon GB'), url('../assets/fonts/pokemon-gb/PokemonGB.ttf') format('truetype');
+}
+html {
+	font-family: 'Pokemon GB', Verdana, sans-serif;
+	font-size: 62.5%;
+}
+h1, h2, h3, h4, h5, h6 {
+	
+}
+h1 {
+	font-size: 2.6rem;
+	text-align: center;
+}
+h2 {
+	font-size: 2.2rem;
+}
+h3 {
+	font-size: 2.0rem;
+}
+h4 {
+	font-size: 1.8rem;
+}
+h5 {
+	font-size: 1.6rem;
+}
+h6 {
+	font-size: 1.4rem;
+}
+
+/*** LAYOUT ***/
+section {
+	display: block;
+	float: left;
+	width: 100%;
+	margin: 0 0 30px 0;
+	padding: 0 20px;
+}
+button {
+	display: inline-block;
+	margin: 0 5px 5px 0;
+	padding: 10px 10px;
+	background: none;
+	box-shadow: none;
+	border: 2px solid blue;
+	color: #444;
+	font: 600 1.2rem/1.2 Verdana, sans-serif;
+	cursor: pointer;
+	transition: all 0.3s;
+	&:hover {
+		background: blue;
+		color: #fff;
+	}
+}
