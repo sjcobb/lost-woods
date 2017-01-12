@@ -13,6 +13,7 @@ body {
   width: 100%;
   height: 100%;
   background-color: #000;
+  background-color: #0e5135;
   color: #fff;
   margin: 0px;
   padding: 0;
@@ -120,12 +121,17 @@ effect.setSize(window.innerWidth, window.innerHeight);
 // Add a repeating grid as a skybox.
 var boxSize = 5;
 var loader = new THREE.TextureLoader();
-loader.load('img/box.png', onTextureLoaded);
+//loader.load('img/box.png', onTextureLoaded);
+//loader.load('assets/textures/crate.gif', onTextureLoaded);
+//loader.load('assets/mc-textures/leaves_big_oak_opaque.png', onTextureLoaded);
+loader.load('assets/textures/dirt.png', onTextureLoaded);
 
+/* see: https://threejs.org/docs/api/textures/Texture.html */
 function onTextureLoaded(texture) {
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.RepeatWrapping;
-  texture.repeat.set(boxSize, boxSize);
+  //texture.repeat.set(boxSize, boxSize);
+  texture.repeat.set( 5, 5 ); //how many times the texture is repeated across the surface, in each direction U and V
 
   var geometry = new THREE.BoxGeometry(boxSize, boxSize, boxSize);
   var material = new THREE.MeshBasicMaterial({
@@ -158,7 +164,9 @@ var material = new THREE.MeshNormalMaterial();
 var cube = new THREE.Mesh(geometry, material);
 
 // Position cube mesh to be right in front of you.
-cube.position.set(0, controls.userHeight, -1);
+console.log(controls.userHeight);
+//cube.position.set(0, controls.userHeight, -1);
+cube.position.set(0, 3.5, -1);
 
 // Add cube mesh to your three.js scene
 scene.add(cube);
