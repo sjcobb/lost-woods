@@ -72,6 +72,9 @@ WebVRConfig = {
   three.js 3d library
   -->
 <script src="node_modules/three/build/three.min.js"></script>
+<script src="node_modules/three/examples/js/loaders/DDSLoader.js"></script>
+<script src="node_modules/three/examples/js/loaders/MTLLoader.js"></script>
+<script src="node_modules/three/examples/js/loaders/OBJLoader.js"></script>
 
 <!--
   VRControls.js acquires positional information from connected VR devices and applies the transformations to a three.js camera object.
@@ -110,8 +113,7 @@ var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000);
 
 var controls = new THREE.VRControls(camera);
-controls.standing = true;
-controls.standing = true;
+controls.standing = true; //raise user above ground
 
 // Apply VR stereo rendering to renderer.
 var effect = new THREE.VREffect(renderer);
@@ -119,8 +121,8 @@ effect.setSize(window.innerWidth, window.innerHeight);
 
 
 // Add a repeating grid as a skybox.
-//var boxSize = 5;
-var boxSize = 10;
+//var boxSize = 10;
+var boxSize = 20;
 var loader = new THREE.TextureLoader();
 loader.load('img/box.png', onTextureLoaded);
 //loader.load('assets/textures/crate.gif', onTextureLoaded);
@@ -179,12 +181,53 @@ scene.add(cube);
 sign.position.set(-4.75, 0.25, -4.75); //left-right, top-down, forward-back
 scene.add(sign);
 
-var crate_texture = new THREE.TextureLoader().load( 'assets/textures/crate.gif' );
+/*** NEW ***/
+/*var crate_texture = new THREE.TextureLoader().load( 'assets/textures/crate.gif' );
 var geometry = new THREE.BoxBufferGeometry( 200, 200, 200 );
 var material = new THREE.MeshBasicMaterial( { map: crate_texture } );
 mesh = new THREE.Mesh( geometry, material );
 mesh.position.set(0, 1.5, -1);
-scene.add( mesh );
+scene.add( mesh );*/
+
+var ambient = new THREE.AmbientLight( 0x444444 );
+scene.add( ambient );
+
+var directionalLight = new THREE.DirectionalLight( 0xffeedd );
+directionalLight.position.set( 0, 0, 1 ).normalize();
+scene.add( directionalLight );
+
+var onProgress = function ( xhr ) {
+  if ( xhr.lengthComputable ) {
+    var percentComplete = xhr.loaded / xhr.total * 100;
+    console.log( Math.round(percentComplete, 2) + '% downloaded' );
+  }
+};
+
+var onError = function ( xhr ) { };
+
+THREE.Loader.Handlers.add( /\.dds$/i, new THREE.DDSLoader() );
+
+var mtlLoader = new THREE.MTLLoader();
+mtlLoader.setPath( 'assets/models/ganondorf/' );
+mtlLoader.load( 'model.mtl', function( materials ) {
+
+  materials.preload();
+
+  var objLoader = new THREE.OBJLoader();
+  objLoader.setMaterials( materials );
+  objLoader.setPath( 'assets/models/ganondorf/' );
+  objLoader.load( 'model.obj', function ( object ) {
+
+    object.scale.set(0.4, 0.4, 0.4);
+    //object.position.y = - 95;
+    //object.position.set(-4.75, 0.25, -4.75);
+    object.position.set(0, 0, -5);
+    scene.add( object );
+
+  }, onProgress, onError );
+
+});
+
 
 window.addEventListener('resize', onResize, true);
 window.addEventListener('vrdisplaypresentchange', onResize, true);
