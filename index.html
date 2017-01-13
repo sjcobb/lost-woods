@@ -119,12 +119,13 @@ effect.setSize(window.innerWidth, window.innerHeight);
 
 
 // Add a repeating grid as a skybox.
-var boxSize = 5;
+//var boxSize = 5;
+var boxSize = 10;
 var loader = new THREE.TextureLoader();
-//loader.load('img/box.png', onTextureLoaded);
+loader.load('img/box.png', onTextureLoaded);
 //loader.load('assets/textures/crate.gif', onTextureLoaded);
 //loader.load('assets/mc-textures/leaves_big_oak_opaque.png', onTextureLoaded);
-loader.load('assets/textures/dirt.png', onTextureLoaded);
+//loader.load('assets/textures/dirt.png', onTextureLoaded);
 
 /* see: https://threejs.org/docs/api/textures/Texture.html */
 function onTextureLoaded(texture) {
@@ -143,6 +144,7 @@ function onTextureLoaded(texture) {
   // Align the skybox to the floor (which is at y=0).
   skybox = new THREE.Mesh(geometry, material);
   skybox.position.y = boxSize/2;
+  //skybox.position.y = 10; //grid box way above
   scene.add(skybox);
 
   // For high end VR devices like Vive and Oculus, take into account the stage
@@ -163,13 +165,26 @@ var geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
 var material = new THREE.MeshNormalMaterial();
 var cube = new THREE.Mesh(geometry, material);
 
+var sign = new THREE.Mesh(geometry, material);
+
 // Position cube mesh to be right in front of you.
-console.log(controls.userHeight);
+//console.log(controls.userHeight);
 //cube.position.set(0, controls.userHeight, -1);
-cube.position.set(0, 3.5, -1);
+cube.position.set(0, 3.5, -1); //move cube higher
 
 // Add cube mesh to your three.js scene
 scene.add(cube);
+
+//sign.position.set(-2.25, 0.25, -2.5); //left-right, top-down, forward-back
+sign.position.set(-4.75, 0.25, -4.75); //left-right, top-down, forward-back
+scene.add(sign);
+
+var crate_texture = new THREE.TextureLoader().load( 'assets/textures/crate.gif' );
+var geometry = new THREE.BoxBufferGeometry( 200, 200, 200 );
+var material = new THREE.MeshBasicMaterial( { map: crate_texture } );
+mesh = new THREE.Mesh( geometry, material );
+mesh.position.set(0, 1.5, -1);
+scene.add( mesh );
 
 window.addEventListener('resize', onResize, true);
 window.addEventListener('vrdisplaypresentchange', onResize, true);
