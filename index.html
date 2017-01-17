@@ -96,6 +96,8 @@ var controls = new THREE.VRControls(camera);
 controls.standing = true; //raise user above ground
 
 /*** VR Controls ***/
+// https://github.com/brianpeiris/three-firstperson-vr-controls
+// https://brian.peiris.io/three-firstperson-vr-controls/demo/
 // Create VRControls in addition to FirstPersonVRControls.
 var vrControls = new THREE.VRControls(camera);
 vrControls.standing = true;
@@ -110,13 +112,18 @@ effect.setSize(window.innerWidth, window.innerHeight);
 
 
 // Add a repeating grid as a skybox.
-//var boxSize = 10;
-var boxSize = 20;
+var boxSize = 15;
+//var boxSize = 20;
 var loader = new THREE.TextureLoader();
 loader.load('img/box.png', onTextureLoaded);
 //loader.load('assets/textures/crate.gif', onTextureLoaded);
 //loader.load('assets/mc-textures/leaves_big_oak_opaque.png', onTextureLoaded);
-//loader.load('assets/textures/dirt.png', onTextureLoaded);
+
+// load dirt texture, set wrap mode to repeat
+var dirt_texture = new THREE.TextureLoader().load( "assets/textures/dirt.png" );
+dirt_texture.wrapS = THREE.RepeatWrapping;
+dirt_texture.wrapT = THREE.RepeatWrapping;
+dirt_texture.repeat.set( 4, 4 );
 
 /* see: https://threejs.org/docs/api/textures/Texture.html */
 function onTextureLoaded(texture) {
@@ -127,15 +134,16 @@ function onTextureLoaded(texture) {
 
   var geometry = new THREE.BoxGeometry(boxSize, boxSize, boxSize);
   var material = new THREE.MeshBasicMaterial({
-    map: texture,
+    map: dirt_texture,
     color: 0x01BE00,
     side: THREE.BackSide
   });
 
   // Align the skybox to the floor (which is at y=0).
   skybox = new THREE.Mesh(geometry, material);
-  skybox.position.y = boxSize/2;
-  //skybox.position.y = 10; //grid box way above
+  //skybox.position.y = boxSize/2;
+  console.log(boxSize/2);
+  skybox.position.y = 2.5; //grid box way above
   scene.add(skybox);
 
   // For high end VR devices like Vive and Oculus, take into account the stage parameters provided.
@@ -205,10 +213,14 @@ mtlLoader.load( 'model.mtl', function( materials ) {
   objLoader.setPath( 'assets/models/ganondorf/' );
   objLoader.load( 'model.obj', function ( object ) {
 
-    object.scale.set(0.4, 0.4, 0.4);
+    //object.scale.set(0.4, 0.4, 0.4);
+    object.scale.set(0.5, 0.5, 0.5);
     //object.position.y = - 95;
-    //object.position.set(-4.75, 0.25, -4.75);
-    object.position.set(0, 0, -5);
+    //object.position.set(0, 0, -5);
+    object.position.set(0, -4.5, -5); //ganondorf on ground
+
+    //object.material.emissive = new THREE.Color( 0.2, 0.2, 0.2 );
+
     scene.add( object );
 
   }, onProgress, onError );
