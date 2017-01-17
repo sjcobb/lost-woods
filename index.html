@@ -51,6 +51,7 @@ WebVRConfig = {
   -->
 <script src="node_modules/three/build/three.min.js"></script>
 <script src="node_modules/three/examples/js/controls/FirstPersonControls.js"></script>
+<script src="node_modules/three-firstperson-vr-controls/FirstPersonVRControls.js"></script>
 <script src="node_modules/three/examples/js/loaders/DDSLoader.js"></script>
 <script src="node_modules/three/examples/js/loaders/MTLLoader.js"></script>
 <script src="node_modules/three/examples/js/loaders/OBJLoader.js"></script>
@@ -93,6 +94,15 @@ var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHei
 
 var controls = new THREE.VRControls(camera);
 controls.standing = true; //raise user above ground
+
+/*** VR Controls ***/
+// Create VRControls in addition to FirstPersonVRControls.
+var vrControls = new THREE.VRControls(camera);
+vrControls.standing = true;
+var fpVrControls = new THREE.FirstPersonVRControls(camera, scene);
+// Optionally enable vertical movement.
+fpVrControls.verticalMovement = true;
+
 
 // Apply VR stereo rendering to renderer.
 var effect = new THREE.VREffect(renderer);
@@ -220,6 +230,12 @@ function animate(timestamp) {
 
   controls.update();
   // Render the scene through the manager.
+
+  // Update FirstPersonControls after VRControls.
+  // FirstPersonControls requires a timestamp.
+  vrControls.update();
+  fpVrControls.update(timestamp);
+
   manager.render(scene, camera, timestamp);
   effect.render(scene, camera);
 

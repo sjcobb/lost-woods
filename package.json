@@ -9,6 +9,7 @@
   "dependencies": {
     "es6-promise": "^4.0.5",
     "three": "^0.81.2",
+    "three-firstperson-vr-controls": "^0.1.0",
     "webvr-polyfill": "^0.9.3"
   },
   "devDependencies": {
