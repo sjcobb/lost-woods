@@ -101,6 +101,7 @@ wallTexture.repeat.set( 1, 1 );
 // DoubleSide: render texture on both sides of mesh
 var wallMaterial = new THREE.MeshBasicMaterial( { map: wallTexture, side: THREE.DoubleSide } );
 var wallGeometry = new THREE.PlaneGeometry(60, 40, 1, 1); // e/w, n/s
+//var wallGeometry = new THREE.PlaneGeometry(600, 40, 1, 1); // extended
 var wall1 = new THREE.Mesh(wallGeometry, wallMaterial);
 var wall2 = new THREE.Mesh(wallGeometry, wallMaterial);
 var wall3 = new THREE.Mesh(wallGeometry, wallMaterial);
