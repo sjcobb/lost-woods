@@ -42,37 +42,50 @@ var loader = new THREE.TextureLoader();
 loader.load('img/box.png', onTextureLoaded);
 //loader.load('assets/textures/crate.gif', onTextureLoaded);
 //loader.load('assets/mc-textures/leaves_big_oak_opaque.png', onTextureLoaded);
-
-// load dirt texture, set wrap mode to repeat
 var dirt_texture = new THREE.TextureLoader().load( "assets/textures/dirt.png" );
-dirt_texture.wrapS = THREE.RepeatWrapping;
-dirt_texture.wrapT = THREE.RepeatWrapping;
-dirt_texture.repeat.set( 4, 4 );
 
 /* see: https://threejs.org/docs/api/textures/Texture.html */
 function onTextureLoaded(texture) {
-  texture.wrapS = THREE.RepeatWrapping;
-  texture.wrapT = THREE.RepeatWrapping;
+  //texture.wrapS = THREE.RepeatWrapping;
+  //texture.wrapT = THREE.RepeatWrapping;
   //texture.repeat.set(boxSize, boxSize);
-  texture.repeat.set( 5, 5 ); //how many times the texture is repeated across the surface, in each direction U and V
+  //texture.repeat.set( 5, 5 ); //how many times the texture is repeated across the surface, in each direction U and V
 
   var geometry = new THREE.BoxGeometry(boxSize, boxSize, boxSize);
   var material = new THREE.MeshBasicMaterial({
     map: dirt_texture,
+    //map: texture,
     color: 0x01BE00,
-    side: THREE.BackSide
+    //side: THREE.BackSide //inside 
+    //side: THREE.FrontSide //outsiWde (nothing / default)
+    side: THREE.DoubleSide //both
   });
 
   // Align the skybox to the floor (which is at y=0).
   skybox = new THREE.Mesh(geometry, material);
   //skybox.position.y = boxSize/2;
-  console.log(boxSize/2);
   skybox.position.y = 2.5; //grid box way above
-  scene.add(skybox);
+  //scene.add(skybox);
 
   // For high end VR devices like Vive and Oculus, take into account the stage parameters provided.
   setupStage();
 }
+
+///////////
+// FLOOR //
+///////////
+// note: 4x4 checkboard pattern scaled so that each square is 25 by 25 pixels.
+var floorTexture = new THREE.ImageUtils.loadTexture( 'assets/textures//checkerboard.jpg' );
+floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
+floorTexture.repeat.set( 10, 10 );
+// DoubleSide: render texture on both sides of mesh
+var floorMaterial = new THREE.MeshBasicMaterial( { map: floorTexture, side: THREE.DoubleSide } );
+var floorGeometry = new THREE.PlaneGeometry(1000, 1000, 1, 1);
+var floor = new THREE.Mesh(floorGeometry, floorMaterial);
+//floor.position.y = -0.5;
+floor.position.y = -6.0;
+floor.rotation.x = Math.PI / 2;
+scene.add(floor);
 
 
 // Create a VR manager helper to enter and exit VR mode.
@@ -101,13 +114,6 @@ sign.position.set(-4.75, 0.25, -4.75); //left-right, top-down, forward-back
 scene.add(sign);
 
 /*** NEW ***/
-/*var crate_texture = new THREE.TextureLoader().load( 'assets/textures/crate.gif' );
-var geometry = new THREE.BoxBufferGeometry( 200, 200, 200 );
-var material = new THREE.MeshBasicMaterial( { map: crate_texture } );
-mesh = new THREE.Mesh( geometry, material );
-mesh.position.set(0, 1.5, -1);
-scene.add( mesh );*/
-
 var ambient = new THREE.AmbientLight( 0x444444 );
 //var ambient = new THREE.AmbientLight( 0x101030 );
 scene.add( ambient );
@@ -201,6 +207,7 @@ function setupStage() {
 }
 
 function setStageDimensions(stage) {
+  /* not sure what this does... */
   // Make the skybox fit the stage.
   var material = skybox.material;
   scene.remove(skybox);
