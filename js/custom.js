@@ -24,11 +24,12 @@ controls.standing = true; //raise user above ground
 // https://brian.peiris.io/three-firstperson-vr-controls/demo/
 // Create VRControls in addition to FirstPersonVRControls.
 var vrControls = new THREE.VRControls(camera);
-vrControls.standing = true;
+//vrControls.standing = true;
 var fpVrControls = new THREE.FirstPersonVRControls(camera, scene);
 // Optionally enable vertical movement.
 fpVrControls.verticalMovement = true;
-
+fpVrControls.movementSpeed = 5; //normal
+fpVrControls.movementSpeed = 10;
 
 // Apply VR stereo rendering to renderer.
 var effect = new THREE.VREffect(renderer);
