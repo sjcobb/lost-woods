@@ -36,7 +36,7 @@ effect.setSize(window.innerWidth, window.innerHeight);
 
 
 // Add a repeating grid as a skybox.
-var boxSize = 15;
+var boxSize = 30;
 //var boxSize = 20;
 var loader = new THREE.TextureLoader();
 loader.load('img/box.png', onTextureLoaded);
@@ -75,17 +75,39 @@ function onTextureLoaded(texture) {
 // FLOOR //
 ///////////
 // note: 4x4 checkboard pattern scaled so that each square is 25 by 25 pixels.
-var floorTexture = new THREE.ImageUtils.loadTexture( 'assets/textures//checkerboard.jpg' );
+//var floorTexture = new THREE.ImageUtils.loadTexture( 'assets/textures/checkerboard.jpg' );
+var floorTexture = new THREE.ImageUtils.loadTexture( 'assets/textures/dirt.png' );
+//floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
 floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
 floorTexture.repeat.set( 10, 10 );
 // DoubleSide: render texture on both sides of mesh
 var floorMaterial = new THREE.MeshBasicMaterial( { map: floorTexture, side: THREE.DoubleSide } );
-var floorGeometry = new THREE.PlaneGeometry(1000, 1000, 1, 1);
+var floorGeometry = new THREE.PlaneGeometry(boxSize, boxSize, 1, 1); // e/w, n/s
 var floor = new THREE.Mesh(floorGeometry, floorMaterial);
 //floor.position.y = -0.5;
-floor.position.y = -6.0;
-floor.rotation.x = Math.PI / 2;
+floor.position.y = -4.8; //lower = floor lowers
+floor.rotation.x = Math.PI / 2; // 1.57
 scene.add(floor);
+
+///////////
+// WALL //
+///////////
+var wallTexture = new THREE.ImageUtils.loadTexture( 'assets/textures/checkerboard.jpg' );
+wallTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
+wallTexture.repeat.set( 10, 10 );
+// DoubleSide: render texture on both sides of mesh
+var wallMaterial = new THREE.MeshBasicMaterial( { map: wallTexture, side: THREE.DoubleSide } );
+var wallGeometry = new THREE.PlaneGeometry(boxSize, boxSize, 1, 1); // e/w, n/s
+var wall1 = new THREE.Mesh(wallGeometry, wallMaterial);
+//floor.position.y = -0.5;
+/* Back Wall */
+wall1.position.x = 0;
+wall1.position.y = -4.8;
+wall1.position.z = -15; //further away
+var wall_rotation = 0.01;
+console.log(wall_rotation);
+wall1.rotation.x = wall_rotation;
+scene.add(wall1);
 
 
 // Create a VR manager helper to enter and exit VR mode.
