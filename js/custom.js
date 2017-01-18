@@ -83,7 +83,7 @@ floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping;
 floorTexture.repeat.set( 1, 1 );
 // DoubleSide: render texture on both sides of mesh
 var floorMaterial = new THREE.MeshBasicMaterial( { map: floorTexture, side: THREE.DoubleSide } );
-var floorGeometry = new THREE.PlaneGeometry(boxSize, boxSize, 1, 1); // e/w, n/s
+var floorGeometry = new THREE.PlaneGeometry(60, 40, 1, 1); // e/w, n/s
 var floor = new THREE.Mesh(floorGeometry, floorMaterial);
 //floor.position.y = -0.5;
 floor.position.y = -4.8; //lower = floor lowers
@@ -93,13 +93,14 @@ scene.add(floor);
 ///////////
 // WALL //
 ///////////
+var wall_y_pos = -2.3;
 //var wallTexture = new THREE.ImageUtils.loadTexture( 'assets/textures/checkerboard.jpg' );
 var wallTexture = new THREE.ImageUtils.loadTexture( 'assets/textures/wall.png' );
 wallTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
 wallTexture.repeat.set( 1, 1 );
 // DoubleSide: render texture on both sides of mesh
 var wallMaterial = new THREE.MeshBasicMaterial( { map: wallTexture, side: THREE.DoubleSide } );
-var wallGeometry = new THREE.PlaneGeometry(60, 45, 1, 1); // e/w, n/s
+var wallGeometry = new THREE.PlaneGeometry(60, 40, 1, 1); // e/w, n/s
 var wall1 = new THREE.Mesh(wallGeometry, wallMaterial);
 var wall2 = new THREE.Mesh(wallGeometry, wallMaterial);
 var wall3 = new THREE.Mesh(wallGeometry, wallMaterial);
@@ -107,7 +108,7 @@ var wall4 = new THREE.Mesh(wallGeometry, wallMaterial);
 //floor.position.y = -0.5;
 /* Front Wall */
 wall1.position.x = 0;
-wall1.position.y = -4.8;
+wall1.position.y = wall_y_pos;
 wall1.position.z = -15; //further away
 var wall_rotation = 0.01;
 console.log(wall_rotation);
@@ -115,13 +116,13 @@ console.log(wall_rotation);
 scene.add(wall1);
 /* Back Wall */
 wall2.position.x = 0;
-wall2.position.y = -4.8;
+wall2.position.y = wall_y_pos;
 wall2.position.z = 15; //further away
 //wall2.rotation.x = wall_rotation;
 scene.add(wall2);
 /* Left Side Wall */
 wall3.position.x = -15;
-wall3.position.y = -4.8;
+wall3.position.y = wall_y_pos;
 wall3.position.z = 0; //further away
 //wall3.rotation.x = wall_rotation;
 //wall3.rotation.y = 2;
@@ -129,7 +130,7 @@ wall3.rotation.y = Math.PI / 2;
 scene.add(wall3);
 /* Right Side Wall */
 wall4.position.x = 15;
-wall4.position.y = -4.8;
+wall4.position.y = wall_y_pos;
 wall4.position.z = 0; //further away
 wall4.rotation.y = Math.PI / 2;
 scene.add(wall4);
