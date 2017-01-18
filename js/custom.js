@@ -36,7 +36,7 @@ effect.setSize(window.innerWidth, window.innerHeight);
 
 
 // Add a repeating grid as a skybox.
-var boxSize = 30;
+var boxSize = 40;
 //var boxSize = 20;
 var loader = new THREE.TextureLoader();
 loader.load('img/box.png', onTextureLoaded);
@@ -79,7 +79,7 @@ function onTextureLoaded(texture) {
 var floorTexture = new THREE.ImageUtils.loadTexture( 'assets/textures/dirt.png' );
 //floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
 floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
-floorTexture.repeat.set( 10, 10 );
+floorTexture.repeat.set( 1, 1 );
 // DoubleSide: render texture on both sides of mesh
 var floorMaterial = new THREE.MeshBasicMaterial( { map: floorTexture, side: THREE.DoubleSide } );
 var floorGeometry = new THREE.PlaneGeometry(boxSize, boxSize, 1, 1); // e/w, n/s
@@ -92,13 +92,13 @@ scene.add(floor);
 ///////////
 // WALL //
 ///////////
-var wallTexture = new THREE.ImageUtils.loadTexture( 'assets/textures/checkerboard.jpg' );
-//var wallTexture = new THREE.ImageUtils.loadTexture( 'assets/textures/wall.png' );
+//var wallTexture = new THREE.ImageUtils.loadTexture( 'assets/textures/checkerboard.jpg' );
+var wallTexture = new THREE.ImageUtils.loadTexture( 'assets/textures/wall.png' );
 wallTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
-wallTexture.repeat.set( 10, 10 );
+wallTexture.repeat.set( 1, 1 );
 // DoubleSide: render texture on both sides of mesh
 var wallMaterial = new THREE.MeshBasicMaterial( { map: wallTexture, side: THREE.DoubleSide } );
-var wallGeometry = new THREE.PlaneGeometry(boxSize, boxSize, 1, 1); // e/w, n/s
+var wallGeometry = new THREE.PlaneGeometry(60, 45, 1, 1); // e/w, n/s
 var wall1 = new THREE.Mesh(wallGeometry, wallMaterial);
 var wall2 = new THREE.Mesh(wallGeometry, wallMaterial);
 var wall3 = new THREE.Mesh(wallGeometry, wallMaterial);
