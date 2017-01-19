@@ -143,25 +143,53 @@ var params = {
 };
 var manager = new WebVRManager(renderer, effect, params);
 
+/////////////
+// OBJECTS //
+/////////////
 // Create 3D objects.
 var geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
 var material = new THREE.MeshNormalMaterial();
 var cube = new THREE.Mesh(geometry, material);
-
 var sign = new THREE.Mesh(geometry, material);
-
-// Position cube mesh to be right in front of you.
 //cube.position.set(0, controls.userHeight, -1);
 cube.position.set(0, 3.5, -1); //move cube higher
-
-// Add cube mesh to your three.js scene
 scene.add(cube);
-
 //sign.position.set(-2.25, 0.25, -2.5); //left-right, top-down, forward-back
 sign.position.set(-4.75, 0.25, -4.75); //left-right, top-down, forward-back
 scene.add(sign);
 
-/*** NEW ***/
+
+///////////
+// SOUND //
+///////////
+var listener = new THREE.AudioListener();
+camera.add( listener );
+
+// sound spheres
+//var sphere = new THREE.SphereGeometry( 5, 8, 4 );
+var sphere = new THREE.SphereGeometry( 2.5, 4, 2 );
+material_sphere1 = new THREE.MeshPhongMaterial( { color: 0xffaa00, shading: THREE.FlatShading, shininess: 0 } );
+
+var audioLoader = new THREE.AudioLoader();
+
+var mesh1 = new THREE.Mesh( sphere, material_sphere1 );
+mesh1.position.set(0, 2.5, -40);
+//mesh1.position.set(0, 2.5, -20);
+//mesh1.position.set(-4.75, 0.25, -4.75);
+scene.add( mesh1 );
+
+var sound1 = new THREE.PositionalAudio( listener );
+audioLoader.load( 'assets/sounds/358232_j_s_song.ogg', function( buffer ) {
+  sound1.setBuffer( buffer );
+  //sound1.setRefDistance( 20 ); //higher = louder
+  sound1.setRefDistance( 5 );
+  sound1.play();
+});
+mesh1.add( sound1 );
+
+///////////////////
+// LIGHT / MODEL //
+///////////////////
 var ambient = new THREE.AmbientLight( 0x444444 );
 //var ambient = new THREE.AmbientLight( 0x101030 );
 scene.add( ambient );
