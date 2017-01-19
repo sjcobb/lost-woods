@@ -180,7 +180,7 @@ scene.add( mesh1 );
 var sound1 = new THREE.PositionalAudio( listener );
 audioLoader.load( 'assets/sounds/lost-woods.mp3', function( buffer ) {
   sound1.setBuffer( buffer );
-  sound1.setRefDistance( 3 );
+  sound1.setRefDistance( 2 );
   sound1.setVolume(0.5);
   sound1.setLoop(true);
   sound1.play();
@@ -196,7 +196,7 @@ scene.add( mesh2 );
 var sound2 = new THREE.PositionalAudio( listener );
 audioLoader.load( 'assets/sounds/bolero-of-fire.mp3', function( buffer ) {
   sound2.setBuffer( buffer );
-  sound2.setRefDistance( 3 );
+  sound2.setRefDistance( 2 );
   sound2.setVolume(0.5);
   sound2.setLoop(true);
   sound2.play();
@@ -212,7 +212,7 @@ scene.add( mesh3 );
 var sound3 = new THREE.PositionalAudio( listener );
 audioLoader.load( 'assets/sounds/ice-cavern.mp3', function( buffer ) {
   sound3.setBuffer( buffer );
-  sound3.setRefDistance( 3 );
+  sound3.setRefDistance( 2 );
   sound3.setVolume(0.1);
   sound3.setLoop(true);
   sound3.play();
