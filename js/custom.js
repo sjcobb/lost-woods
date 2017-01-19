@@ -173,16 +173,19 @@ material_sphere1 = new THREE.MeshPhongMaterial( { color: 0xffaa00, shading: THRE
 var audioLoader = new THREE.AudioLoader();
 
 var mesh1 = new THREE.Mesh( sphere, material_sphere1 );
-mesh1.position.set(0, 2.5, -40);
+mesh1.position.set(0, 2.5, -20);
 //mesh1.position.set(0, 2.5, -20);
 //mesh1.position.set(-4.75, 0.25, -4.75);
 scene.add( mesh1 );
 
 var sound1 = new THREE.PositionalAudio( listener );
-audioLoader.load( 'assets/sounds/358232_j_s_song.ogg', function( buffer ) {
+//audioLoader.load( 'assets/sounds/358232_j_s_song.ogg', function( buffer ) {
+audioLoader.load( 'assets/sounds/lost-woods.mp3', function( buffer ) {
   sound1.setBuffer( buffer );
   //sound1.setRefDistance( 20 ); //higher = louder
-  sound1.setRefDistance( 5 );
+  sound1.setRefDistance( 3 );
+  sound1.setVolume(0.5);
+  sound1.setLoop(true);
   sound1.play();
 });
 mesh1.add( sound1 );
