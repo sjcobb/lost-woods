@@ -260,7 +260,7 @@ mtlLoader.load( 'model.mtl', function( materials ) {
 
     //object.material.emissive = new THREE.Color( 0.2, 0.2, 0.2 );
 
-    scene.add( object );
+    //scene.add( object );
 
   }, onProgress, onError );
 
