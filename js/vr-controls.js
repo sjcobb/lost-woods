@@ -63,9 +63,9 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
 
   this.onKeyUp = function ( event ) {
 
-    console.log(camera.position);
-    if (camera.position.z < -11 || camera.position.z > 11 || camera.position.x > 12 || camera.position.x < -12) {
-      console.log("RESET HERO");
+    //console.log(camera.position);
+    if (camera.position.z < -12 || camera.position.z > 12 || camera.position.x > 12 || camera.position.x < -12) {
+      //console.log("RESET HERO");
       this.resetHero = true;
     }
 
@@ -129,7 +129,7 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
     if ( this.verticalMovement && this.moveDown ) this.object.translateY( - actualMoveSpeed );
 
     if (this.resetHero) {
-      console.log("Z: " + this.object.position.z);
+      //console.log("Z: " + this.object.position.z);
       this.object.position.z = 10;
       this.object.position.x = 0;
       this.resetHero = false;

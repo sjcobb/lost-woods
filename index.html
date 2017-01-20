@@ -44,32 +44,32 @@ WebVRConfig = {
 <!--
   A polyfill for Promises. Needed for IE and Edge.
   -->
-<script src="node_modules/es6-promise/dist/es6-promise.js"></script>
+<script src="js/lib/es6-promise.min.js"></script>
 
 <!--
   three.js 3d library
   -->
-<script src="node_modules/three/build/three.min.js"></script>
-<script src="node_modules/three/examples/js/controls/FirstPersonControls.js"></script>
+<script src="js/lib/three.min.js"></script>
+<script src="js/lib/FirstPersonControls.js"></script>
 <script src="js/vr-controls.js"></script>
-<script src="node_modules/three/examples/js/loaders/DDSLoader.js"></script>
-<script src="node_modules/three/examples/js/loaders/MTLLoader.js"></script>
-<script src="node_modules/three/examples/js/loaders/OBJLoader.js"></script>
+<script src="js/lib/DDSLoader.js"></script>
+<script src="js/lib/MTLLoader.js"></script>
+<script src="js/lib/OBJLoader.js"></script>
 
 <!--
   VRControls.js acquires positional information from connected VR devices and applies the transformations to a three.js camera object.
    -->
-<script src="node_modules/three/examples/js/controls/VRControls.js"></script>
+<script src="js/lib/VRControls.js"></script>
 
 <!--
   VREffect.js handles stereo camera setup and rendering.
   -->
-<script src="node_modules/three/examples/js/effects/VREffect.js"></script>
+<script src="js/lib/VREffect.js"></script>
 
 <!--
   A polyfill for WebVR using the Device{Motion,Orientation}Event API.
   -->
-<script src="node_modules/webvr-polyfill/build/webvr-polyfill.js"></script>
+<script src="js/lib/webvr-polyfill.js"></script>
 
 <!--
   Helps enter and exit VR mode, provides best practices while in VR.

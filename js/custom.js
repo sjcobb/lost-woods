@@ -180,8 +180,9 @@ scene.add( mesh1 );
 var sound1 = new THREE.PositionalAudio( listener );
 audioLoader.load( 'assets/sounds/lost-woods.mp3', function( buffer ) {
   sound1.setBuffer( buffer );
-  sound1.setRefDistance( 2 );
-  sound1.setVolume(0.5);
+  sound1.setRefDistance( 0.3 );
+  sound1.setVolume(1.0);
+  //sound1.setVolume(0.5);
   sound1.setLoop(true);
   sound1.play();
 });
@@ -189,7 +190,7 @@ mesh1.add( sound1 );
 
 //
 
-var mesh2 = new THREE.Mesh( sphere, material_sphere2 );
+/*var mesh2 = new THREE.Mesh( sphere, material_sphere2 );
 mesh2.position.set(0, 2.5, 20);
 scene.add( mesh2 );
 
@@ -201,11 +202,11 @@ audioLoader.load( 'assets/sounds/bolero-of-fire.mp3', function( buffer ) {
   sound2.setLoop(true);
   sound2.play();
 });
-mesh2.add( sound2 );
+mesh2.add( sound2 );*/
 
 //
 
-var mesh3 = new THREE.Mesh( sphere, material_sphere3 );
+/*var mesh3 = new THREE.Mesh( sphere, material_sphere3 );
 mesh3.position.set(20, 2.5, 0);
 scene.add( mesh3 );
 
@@ -217,12 +218,12 @@ audioLoader.load( 'assets/sounds/ice-cavern.mp3', function( buffer ) {
   sound3.setLoop(true);
   sound3.play();
 });
-mesh3.add( sound3 );
+mesh3.add( sound3 );*/
 
 ///////////////////
 // LIGHT / MODEL //
 ///////////////////
-var ambient = new THREE.AmbientLight( 0x444444 );
+/*var ambient = new THREE.AmbientLight( 0x444444 );
 //var ambient = new THREE.AmbientLight( 0x101030 );
 scene.add( ambient );
 
@@ -257,14 +258,13 @@ mtlLoader.load( 'model.mtl', function( materials ) {
     //object.position.y = - 95;
     //object.position.set(0, 0, -5);
     object.position.set(0, -4.5, -5); //ganondorf on ground
-
     //object.material.emissive = new THREE.Color( 0.2, 0.2, 0.2 );
 
     //scene.add( object );
 
   }, onProgress, onError );
 
-});
+});*/
 
 
 window.addEventListener('resize', onResize, true);
