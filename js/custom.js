@@ -77,7 +77,7 @@ function onTextureLoaded(texture) {
 ///////////
 // note: 4x4 checkboard pattern scaled so that each square is 25 by 25 pixels.
 //var floorTexture = new THREE.ImageUtils.loadTexture( 'assets/textures/checkerboard.jpg' );
-var floorTexture = new THREE.ImageUtils.loadTexture( 'assets/textures/dirt.png' );
+var floorTexture = new THREE.ImageUtils.loadTexture( 'assets/textures/ground.png' );
 //floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
 floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
 floorTexture.repeat.set( 1, 1 );
