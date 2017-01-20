@@ -1,4 +1,5 @@
 /**
+ * THANKS GUYS!!!
  * @author brianpeiris / http://brian.peiris.io/
  *
  * Based on code from THREE.FirstPersonControls
@@ -63,7 +64,7 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
   this.onKeyUp = function ( event ) {
 
     console.log(camera.position);
-    if (camera.position.z < -11 || camera.position.z > 11 || camera.position.x > 11 || camera.position.x < -11) {
+    if (camera.position.z < -11 || camera.position.z > 11 || camera.position.x > 12 || camera.position.x < -12) {
       console.log("RESET HERO");
       this.resetHero = true;
     }
