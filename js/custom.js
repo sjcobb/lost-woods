@@ -58,7 +58,7 @@ function onTextureLoaded(texture) {
     //map: texture,
     color: 0x01BE00,
     //side: THREE.BackSide //inside 
-    //side: THREE.FrontSide //outsiWde (nothing / default)
+    //side: THREE.FrontSide //outside
     side: THREE.DoubleSide //both
   });
 
@@ -153,10 +153,10 @@ var cube = new THREE.Mesh(geometry, material);
 var sign = new THREE.Mesh(geometry, material);
 //cube.position.set(0, controls.userHeight, -1);
 cube.position.set(0, 3.5, -1); //move cube higher
-scene.add(cube);
-//sign.position.set(-2.25, 0.25, -2.5); //left-right, top-down, forward-back
 sign.position.set(-4.75, 0.25, -4.75); //left-right, top-down, forward-back
-scene.add(sign);
+
+//scene.add(cube);
+//scene.add(sign);
 
 
 ///////////
