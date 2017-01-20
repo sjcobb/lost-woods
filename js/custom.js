@@ -27,8 +27,8 @@ var vrControls = new THREE.VRControls(camera);
 //vrControls.standing = true;
 var fpVrControls = new THREE.FirstPersonVRControls(camera, scene);
 // Optionally enable vertical movement.
-fpVrControls.verticalMovement = true;
-fpVrControls.movementSpeed = 5; //normal
+//fpVrControls.verticalMovement = true;
+//fpVrControls.movementSpeed = 5; //normal
 fpVrControls.movementSpeed = 10;
 
 // Apply VR stereo rendering to renderer.
