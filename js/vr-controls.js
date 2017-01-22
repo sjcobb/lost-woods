@@ -30,8 +30,6 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
   
   if (navigator.getVRDevices) {
     navigator.getVRDevices().then(function (devices){
-      // Note: Getting the first device by default.
-      // Ideally we should use whatever THREE.VRControls is using.
       this.sensor = devices.find(function (device) { 
         return device instanceof PositionSensorVRDevice; 
       });
@@ -65,7 +63,6 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
 
     //console.log(camera.position);
     if (camera.position.z < -12 || camera.position.z > 12 || camera.position.x > 12 || camera.position.x < -12) {
-      //console.log("RESET HERO");
       this.resetHero = true;
     }
 
@@ -128,13 +125,6 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
     if ( this.verticalMovement && this.moveUp ) this.object.translateY( actualMoveSpeed );
     if ( this.verticalMovement && this.moveDown ) this.object.translateY( - actualMoveSpeed );
 
-    if (this.resetHero) {
-      //console.log("Z: " + this.object.position.z);
-      this.object.position.z = 10;
-      this.object.position.x = 0;
-      this.resetHero = false;
-    }
-
     var hasPosition = this.sensor && this.sensor.getState().hasPosition;
     var vrCameraPosition;
     if (hasPosition) {
@@ -145,6 +135,45 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
     if (hasPosition) {
       camera.position.add(vrCameraPosition);
     }
+
+    /*** NEW ***/
+    if (this.resetHero) {
+      var resetOptions = ["top", "right", "bottom", "left"];
+      var resetPick = resetOptions[Math.floor(Math.random()*resetOptions.length)];
+      console.log("Reset to: " + resetPick);
+      console.log(camera.getWorldDirection());
+      //console.log(camera.quaternion);
+      console.log(this);
+
+      //camera.position.set(30,0,0);
+      //camera.up = new THREE.Vector3(0,0,1);
+      //camera.lookAt(new THREE.Vector3(0,0,0));
+
+      switch (resetPick) {
+        case "top": 
+          this.object.position.z = -10;
+          this.object.position.x = 0;
+          //camera.position.z = -10;
+          break;
+        case "right":
+          this.object.position.z = 0;
+          this.object.position.x = 10;
+          break;
+        case "bottom":
+          this.object.position.z = 10;
+          this.object.position.x = 0;
+          //camera.position.z = 10;
+          break;
+        case "left":
+          this.object.position.z = 0;
+          this.object.position.x = -10;
+          break;
+      }
+      this.resetHero = false;
+
+      //console.log("Z: " + this.object.position.z);
+    }
+
   };
 
   this.dispose = function() {

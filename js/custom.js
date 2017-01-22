@@ -20,8 +20,6 @@ var controls = new THREE.VRControls(camera);
 controls.standing = true; //raise user above ground
 
 /*** VR Controls ***/
-// https://github.com/brianpeiris/three-firstperson-vr-controls
-// https://brian.peiris.io/three-firstperson-vr-controls/demo/
 // Create VRControls in addition to FirstPersonVRControls.
 var vrControls = new THREE.VRControls(camera);
 //vrControls.standing = true;
