@@ -110,7 +110,6 @@ wall1.position.x = 0;
 wall1.position.y = wall_y_pos;
 wall1.position.z = -15; //further away
 var wall_rotation = 0.01;
-console.log(wall_rotation);
 //wall1.rotation.x = wall_rotation;
 scene.add(wall1);
 /* Back Wall */

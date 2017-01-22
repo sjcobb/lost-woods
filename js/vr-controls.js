@@ -106,7 +106,6 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
 
   var lastTimestamp = 0;  
   this.update = function( timestamp ) {
-
     if ( !this.enabled ) return;
 
     camera.quaternion.multiplyQuaternions(this.angleQuaternion, camera.quaternion);    
@@ -131,7 +130,7 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
       vrCameraPosition = camera.position.clone();
       vrCameraPosition.applyQuaternion(this.angleQuaternion);
     }
-    camera.position.copy(this.object.position);
+    camera.position.copy(this.object.position); //important
     if (hasPosition) {
       camera.position.add(vrCameraPosition);
     }
@@ -141,13 +140,9 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
       var resetOptions = ["top", "right", "bottom", "left"];
       var resetPick = resetOptions[Math.floor(Math.random()*resetOptions.length)];
       console.log("Reset to: " + resetPick);
-      console.log(camera.getWorldDirection());
-      //console.log(camera.quaternion);
-      console.log(this);
-
-      //camera.position.set(30,0,0);
-      //camera.up = new THREE.Vector3(0,0,1);
-      //camera.lookAt(new THREE.Vector3(0,0,0));
+      //console.log(camera.getWorldDirection());
+      //console.log(camera);
+      //console.log(this.object);
 
       switch (resetPick) {
         case "top": 
@@ -171,7 +166,32 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
       }
       this.resetHero = false;
 
-      //console.log("Z: " + this.object.position.z);
+      /*camera.quaternion.x = 0;
+      camera.quaternion.y = 0;
+      camera.quaternion.z = 1;
+      camera.quaternion.w = 1;
+      this.object.quaternion.x = 0;
+      this.object.quaternion.y = 0;
+      this.object.quaternion.z = 1;
+      this.object.quaternion.w = 1;*/
+      this.angleQuaternion.x = 0;
+      this.angleQuaternion.z = -1;
+      this.angleQuaternion.y = 0;
+      this.angleQuaternion.w = 0;
+      console.log(this.angleQuaternion);
+
+      camera.quaternion.multiplyQuaternions(this.angleQuaternion, camera.quaternion);    
+      setFromQuaternionYComponent(this.object.quaternion, camera.quaternion);
+
+      if (hasPosition) {
+        vrCameraPosition = camera.position.clone();
+        vrCameraPosition.applyQuaternion(this.angleQuaternion);
+      }
+      camera.position.copy(this.object.position); //important
+      if (hasPosition) {
+        camera.position.add(vrCameraPosition);
+      }
+
     }
 
   };
