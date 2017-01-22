@@ -143,6 +143,8 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
       //console.log(camera.getWorldDirection());
       //console.log(camera);
       //console.log(this.object);
+      console.log(this);
+      //console.log(this.object.rotation);
 
       switch (resetPick) {
         case "top": 
@@ -164,34 +166,21 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
           this.object.position.x = -10;
           break;
       }
+
+      //console.log(this.angleQuaternion); //stage
+      //this.angleQuaternion.x = 0.5;  //narrow
+      //this.angleQuaternion.z = -1; //sideways, upside down when w=0
+      //this.angleQuaternion.z = 0;
+      //this.angleQuaternion.y = 0;
+      //this.angleQuaternion.w = 0;
+      //this.movementSpeed = 1; //slowmo
+
+      var SNAP_ANGLE = 30 * Math.PI / 180; 
+        
+      this.angle += SNAP_ANGLE * 1;
+      this.angleQuaternion.setFromAxisAngle(YAXIS, this.angle);
+
       this.resetHero = false;
-
-      /*camera.quaternion.x = 0;
-      camera.quaternion.y = 0;
-      camera.quaternion.z = 1;
-      camera.quaternion.w = 1;
-      this.object.quaternion.x = 0;
-      this.object.quaternion.y = 0;
-      this.object.quaternion.z = 1;
-      this.object.quaternion.w = 1;*/
-      this.angleQuaternion.x = 0;
-      this.angleQuaternion.z = -1;
-      this.angleQuaternion.y = 0;
-      this.angleQuaternion.w = 0;
-      console.log(this.angleQuaternion);
-
-      camera.quaternion.multiplyQuaternions(this.angleQuaternion, camera.quaternion);    
-      setFromQuaternionYComponent(this.object.quaternion, camera.quaternion);
-
-      if (hasPosition) {
-        vrCameraPosition = camera.position.clone();
-        vrCameraPosition.applyQuaternion(this.angleQuaternion);
-      }
-      camera.position.copy(this.object.position); //important
-      if (hasPosition) {
-        camera.position.add(vrCameraPosition);
-      }
-
     }
 
   };
