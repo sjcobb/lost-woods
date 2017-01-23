@@ -25,7 +25,7 @@ var vrControls = new THREE.VRControls(camera);
 //vrControls.standing = true;
 var fpVrControls = new THREE.FirstPersonVRControls(camera, scene);
 // Optionally enable vertical movement.
-//fpVrControls.verticalMovement = true;
+fpVrControls.verticalMovement = true;
 //fpVrControls.movementSpeed = 5; //normal
 fpVrControls.movementSpeed = 10;
 
@@ -177,8 +177,8 @@ scene.add( mesh1 );
 var sound1 = new THREE.PositionalAudio( listener );
 audioLoader.load( 'assets/sounds/lost-woods.mp3', function( buffer ) {
   sound1.setBuffer( buffer );
-  sound1.setRefDistance( 0.3 );
-  sound1.setVolume(1.0);
+  sound1.setRefDistance( 0.03 );
+  sound1.setVolume(100);
   //sound1.setVolume(0.5);
   sound1.setLoop(true);
   sound1.play();
@@ -194,8 +194,8 @@ scene.add( mesh2 );
 var sound2 = new THREE.PositionalAudio( listener );
 audioLoader.load( 'assets/sounds/bolero-of-fire.mp3', function( buffer ) {
   sound2.setBuffer( buffer );
-  sound2.setRefDistance( 0.3 );
-  sound2.setVolume(0.8);
+  sound2.setRefDistance( 0.03 );
+  sound2.setVolume(50);
   sound2.setLoop(true);
   sound2.play();
 });
@@ -203,19 +203,21 @@ mesh2.add( sound2 );
 
 //
 
-/*var mesh3 = new THREE.Mesh( sphere, material_sphere3 );
-mesh3.position.set(20, 2.5, 0);
+var mesh3 = new THREE.Mesh( sphere, material_sphere3 );
+mesh3.position.set(-20, 2.5, 0);
 scene.add( mesh3 );
 
 var sound3 = new THREE.PositionalAudio( listener );
-audioLoader.load( 'assets/sounds/ice-cavern.mp3', function( buffer ) {
+//audioLoader.load( 'assets/sounds/ice-cavern.mp3', function( buffer ) {
+//audioLoader.load( 'assets/sounds/carmen_audio_ending.mp3', function( buffer ) {
+audioLoader.load( 'assets/sounds/bats.mp3', function( buffer ) {
   sound3.setBuffer( buffer );
-  sound3.setRefDistance( 2 );
-  sound3.setVolume(0.1);
+  sound3.setRefDistance( 0.015 );
+  sound3.setVolume(20);
   sound3.setLoop(true);
   sound3.play();
 });
-mesh3.add( sound3 );*/
+mesh3.add( sound3 );
 
 ///////////////////
 // LIGHT / MODEL //
@@ -312,7 +314,6 @@ function setupStage() {
 }
 
 function setStageDimensions(stage) {
-  /* not sure what this does... */
   // Make the skybox fit the stage.
   var material = skybox.material;
   scene.remove(skybox);
