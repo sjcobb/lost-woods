@@ -187,19 +187,19 @@ mesh1.add( sound1 );
 
 //
 
-/*var mesh2 = new THREE.Mesh( sphere, material_sphere2 );
+var mesh2 = new THREE.Mesh( sphere, material_sphere2 );
 mesh2.position.set(0, 2.5, 20);
 scene.add( mesh2 );
 
 var sound2 = new THREE.PositionalAudio( listener );
 audioLoader.load( 'assets/sounds/bolero-of-fire.mp3', function( buffer ) {
   sound2.setBuffer( buffer );
-  sound2.setRefDistance( 2 );
-  sound2.setVolume(0.5);
+  sound2.setRefDistance( 0.3 );
+  sound2.setVolume(0.8);
   sound2.setLoop(true);
   sound2.play();
 });
-mesh2.add( sound2 );*/
+mesh2.add( sound2 );
 
 //
 

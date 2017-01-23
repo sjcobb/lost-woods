@@ -62,6 +62,9 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
   this.onKeyUp = function ( event ) {
 
     //console.log(camera.position);
+    if (camera.position.z > 12) {
+      window.location = "https://sjcobb.github.io/fire-temple/";
+    }
     if (camera.position.z < -12 || camera.position.z > 12 || camera.position.x > 12 || camera.position.x < -12) {
       this.resetHero = true;
     }
@@ -141,7 +144,7 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
       var resetPick = resetOptions[Math.floor(Math.random()*resetOptions.length)];
       console.log("Reset to: " + resetPick);
       //console.log(camera.getWorldDirection());
-      
+
       switch (resetPick) {
         case "top": 
           this.object.position.z = -10;
