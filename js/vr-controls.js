@@ -141,33 +141,31 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
       var resetPick = resetOptions[Math.floor(Math.random()*resetOptions.length)];
       console.log("Reset to: " + resetPick);
       //console.log(camera.getWorldDirection());
-      //console.log(camera);
-      //console.log(this.object);
-      console.log(this);
-      //console.log(this.object.rotation);
-
+      
       switch (resetPick) {
         case "top": 
           this.object.position.z = -10;
           this.object.position.x = 0;
-          //camera.position.z = -10;
+          this.angle = 3.14;
           break;
         case "right":
           this.object.position.z = 0;
           this.object.position.x = 10;
+          this.angle = 1.57;  
           break;
         case "bottom":
           this.object.position.z = 10;
           this.object.position.x = 0;
-          //camera.position.z = 10;
+          this.angle = 0;
           break;
         case "left":
           this.object.position.z = 0;
           this.object.position.x = -10;
+          this.angle = 4.71;
           break;
       }
-
-      //console.log(this.angleQuaternion); //stage
+      /* Stage Transitions */
+      //console.log(this.angleQuaternion); 
       //this.angleQuaternion.x = 0.5;  //narrow
       //this.angleQuaternion.z = -1; //sideways, upside down when w=0
       //this.angleQuaternion.z = 0;
@@ -175,11 +173,8 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
       //this.angleQuaternion.w = 0;
       //this.movementSpeed = 1; //slowmo
 
-      var SNAP_ANGLE = 30 * Math.PI / 180; 
-        
-      this.angle += SNAP_ANGLE * 1;
+      //console.log(this.angle);
       this.angleQuaternion.setFromAxisAngle(YAXIS, this.angle);
-
       this.resetHero = false;
     }
 
