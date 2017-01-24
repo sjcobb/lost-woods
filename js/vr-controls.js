@@ -70,7 +70,10 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
       //window.location = "https://ybinstock.github.io/Platos-Cave/";
       //window.location = "http://ybinstock.github.io/carmensandiego_360/";
       //window.location = "https://ybinstock.github.io/starstuff/";
-      //window.location = "https://github.com/sjcobb"; 
+      //window.location = "https://github.com/sjcobb";
+    }
+    if (camera.position.x > 12) { //right
+      window.location = "https://aframe.io/a-blast";
     }
     if (camera.position.z < -12 || camera.position.z > 12 || camera.position.x > 12 || camera.position.x < -12) {
       this.resetHero = true;
