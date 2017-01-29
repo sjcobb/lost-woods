@@ -155,6 +155,25 @@ sign.position.set(-4.75, 0.25, -4.75); //left-right, top-down, forward-back
 //scene.add(cube);
 //scene.add(sign);
 
+/* SILVER KEY */
+//var keyTexture = new THREE.ImageUtils.loadTexture( 'assets/items/key-silver.png' );
+var keyTexture = new THREE.ImageUtils.loadTexture( 'assets/items/key-gold.png' );
+keyTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
+keyTexture.repeat.set( 1, 1 );
+// DoubleSide: render texture on both sides of mesh
+var keyMaterial = new THREE.MeshBasicMaterial( { map: keyTexture, side: THREE.DoubleSide } );
+var keyGeometry = new THREE.PlaneGeometry(2, 2, 1, 1);
+
+var keyMesh = new THREE.Mesh(keyGeometry, keyMaterial);
+keyMesh.position.x = 0;
+//keyMesh.position.y = -2.3;
+keyMesh.position.y = -2;
+keyMesh.position.z = -10;
+//keyMesh.rotation.x = Math.PI / 2; //ceiling
+//keyMesh.rotation.z = Math.PI / 2; //upside down
+//keyMesh.rotation.z = -3.14 / 2; //left flip
+
+scene.add(keyMesh);
 
 ///////////
 // SOUND //

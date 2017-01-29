@@ -71,19 +71,20 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
       }
     }
     if (camera.position.x < -12) { //left
-      //window.location = "https://ybinstock.github.io/BatCave/";
+      window.location = "https://ybinstock.github.io/BatCave/";
       //window.location = "https://ybinstock.github.io/Platos-Cave/";
       //window.location = "http://ybinstock.github.io/carmensandiego_360/";
       //window.location = "https://ybinstock.github.io/starstuff/";
     }
     if (camera.position.x > 12) { //right
-      //window.location = "https://aframe.io/a-blast";
+      window.location = "https://aframe.io/a-blast";
     }
-    if (camera.position.z < -7) { //top
-      console.log("key picked up");
-      //console.log(parent.location);
-      //console.log(document.location);
-      updateInventory();
+    if (camera.position.z < -8) { //top
+      //console.log("key picked up");
+      if (hasKey == false) {
+        scene.remove(keyMesh);
+        updateInventory();
+      }
     }
     if (camera.position.z < -12 || camera.position.z > 12 || camera.position.x > 12 || camera.position.x < -12) {
       this.resetHero = true;
