@@ -1,9 +1,12 @@
 /*
 *** INVENTORY JS ***
 */
+console.log("inventory.js called");
+
 var hasKey = false;
 
 function updateInventory() {
+	console.log("updateInventory() called");
 	hasKey = true;
 	keyNum = 1;
 
@@ -18,6 +21,24 @@ function updateInventory() {
 	document.getElementById("keyDiv").innerHTML = keyHTML;
 	//console.log(document.getElementById("keyDiv").innerHTML);
 
-
 	//parent.location = "?hasKey=true";
+}
+
+function getQueryVariable(variable) {
+  var query = window.location.search.substring(1);
+  var vars = query.split("&");
+  for (var i=0;i<vars.length;i++) {
+    var pair = vars[i].split("=");
+    if(pair[0] == variable){return pair[1];}
+  }
+  return(false);
+}
+
+//console.log(getQueryVariable("id"));
+var queryKey = getQueryVariable("hasKey");
+console.log(queryKey);
+
+if (queryKey == "true") {
+	console.log("key queried");
+	updateInventory();
 }

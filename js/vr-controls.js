@@ -64,8 +64,8 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
     //console.log(camera.position);
     if (camera.position.z > 12) { //bottom
       if (hasKey == true) {
-        //window.location = "https://sjcobb.github.io/fire-temple/?hasKey=true";
-        window.location = "http://fire.dev/?hasKey=true";
+        window.location = "https://sjcobb.github.io/fire-temple/?hasKey=true";
+        //window.location = "http://fire.dev/?hasKey=true";
       } else {
         window.location = "https://sjcobb.github.io/fire-temple/";
       }
