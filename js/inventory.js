@@ -19,10 +19,10 @@ function updateInventory() {
 	hasKey = true;
 	keyNum = 1;
 
-	keyHTML = '<div class="key" style="display:block; width:30px; height:30px; margin:0 0 20px 0; background:#fff; position:relative; top:10px; left:10px;"><div class="circle" style="display:block; margin: 0 auto; background:#000; width:10px; height:10px; position:absolute; top:10px; bottom:0; left:0;right:0; border-radius:50%;"><div class="handle" style="display:block; width:50px; height:5px; position:relative; left:20px; background:#fff;"><div class="end" style="display:block; width:5px; height:15px; position:absolute; top:0; right:15px; background:#fff;"></div><div class="end2" style="display:block; width:5px; height:15px; position:absolute; top:0; right:5px; background:#fff;"></div></div></div></div>'+keyNum;
+	keyHTML = '<div class="key" style="display:block; width:30px; height:30px; margin:0 0 20px 0; background:#c0c0c0; position:relative; top:10px; left:10px;"><div class="circle" style="display:block; margin: 0 auto; background:#000; width:10px; height:10px; position:absolute; top:10px; bottom:0; left:0;right:0; border-radius:50%;"><div class="handle" style="display:block; width:50px; height:5px; position:relative; left:20px; background:#c0c0c0;"><div class="end" style="display:block; width:5px; height:15px; position:absolute; top:0; right:15px; background:#c0c0c0;"></div><div class="end2" style="display:block; width:5px; height:15px; position:absolute; top:0; right:5px; background:#c0c0c0;"></div></div></div></div>'+keyNum;
 	var keyDiv = document.createElement("div");
 	keyDiv.setAttribute("id", "keyDiv");
-	var keyStyle = "position:absolute; top:0; left:0; width:100px; height:100px; padding:10px; background:#000; text-align:center; font-size:20px;"
+	var keyStyle = "position:absolute; top:0; left:0; width:100px; height:100px; padding:10px; text-align:center; color:#c0c0c0; font-size:20px;"
 	keyDiv.setAttribute("style", keyStyle);
 
 	document.body.appendChild(keyDiv);
