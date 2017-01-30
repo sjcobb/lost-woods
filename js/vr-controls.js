@@ -38,29 +38,34 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
 
   this.onMouseDown = function ( event ) {
     console.log("mouse down");
+    checkWoods();
     this.moveForward = true;
   }
 
   this.onMouseUp = function ( event ) {
     console.log("mouse up");
+    checkWoods();
     this.moveForward = false;
   }
 
   this.onTouchStart = function ( event ) {
     console.log("touch start");
+    checkWoods();
     this.moveForward = true;
   }
 
   this.onTouchEnd = function ( event ) {
     console.log("touch end");
+    checkWoods();
     this.moveForward = false;
   }
 
 
   this.onKeyDown = function ( event ) {
 
-    switch ( event.keyCode ) {
+    checkWoods();
 
+    switch ( event.keyCode ) {
       case 38: /*up*/
       case 87: /*W*/ this.moveForward = true; console.log("w start"); break;
 
@@ -75,44 +80,15 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
 
       case 82: /*R*/ this.moveUp = true; break;
       case 70: /*F*/ this.moveDown = true; break;
-
     }
 
   };
 
   this.onKeyUp = function ( event ) {
 
-    //console.log(camera.position);
-    if (camera.position.z > 12) { //bottom
-      if (hasKey == true) {
-        window.location = "https://sjcobb.github.io/fire-temple/?hasKey=true";
-        //window.location = "http://fire.dev/?hasKey=true";
-      } else {
-        window.location = "https://sjcobb.github.io/fire-temple/";
-      }
-    }
-    if (camera.position.x < -12) { //left
-      window.location = "https://ybinstock.github.io/BatCave/";
-      //window.location = "https://ybinstock.github.io/Platos-Cave/";
-      //window.location = "http://ybinstock.github.io/carmensandiego_360/";
-      //window.location = "https://ybinstock.github.io/starstuff/";
-    }
-    if (camera.position.x > 12) { //right
-      window.location = "https://aframe.io/a-blast";
-    }
-    if (camera.position.z < -8) { //top
-      //console.log("key picked up");
-      if (hasKey == false) {
-        scene.remove(keyMesh);
-        updateInventory();
-      }
-    }
-    if (camera.position.z < -12 || camera.position.z > 12 || camera.position.x > 12 || camera.position.x < -12) {
-      this.resetHero = true;
-    }
+    checkWoods();
 
     switch ( event.keyCode ) {
-
       case 38: /*up*/
       case 87: /*W*/ this.moveForward = false; console.log("w stop"); break;
 
@@ -130,7 +106,6 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
 
       case 82: /*R*/ this.moveUp = false; break;
       case 70: /*F*/ this.moveDown = false; break;
-
     }
 
   };
