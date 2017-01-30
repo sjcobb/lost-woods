@@ -1,10 +1,75 @@
 /*
 *** CUSTOM CSS ***
 */
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #0e5135;
+  color: #fff;
+  margin: 0px;
+  padding: 0;
+  overflow: hidden;
+}
 
-#inventory {
+.btn {
+	cursor: pointer;
+	transition: all 0.3s;
+}
+
+
+#movement-controls {
+	position: absolute;
+	bottom: 100px;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	text-align: center;
+}
+#movement-controls .btn-container {
+	display: inline-block;
+	position: relative;
+	/* width: 100px; */
+	/* height: 100px; */
+}
+#movement-controls .btn {
+	position: absolute;
+	height: 0;
+	width: 0;
+	transform: rotate(-45deg);
+}
+#movement-controls .btn:hover {
 	
 }
-#inventory.active {
-	
+
+#m-forward {
+	top: -30px;
+	border-top: 30px solid #F0DC1B;
+	border-left: 30px solid transparent;
+}
+#m-left {
+	left: -30px;
+	border-top: 30px solid #F0DC1B;
+	border-right: 30px solid transparent;
+}
+#m-right {
+	right: -60px;
+	border-bottom: 30px solid #F0DC1B;
+	border-left: 30px solid transparent;
+}
+#m-back {
+	bottom: -60px;
+	border-bottom: 30px solid #F0DC1B;
+	border-right: 30px solid transparent;
+}
+#m-forward:hover {
+	border-top-color: #948816;
+}
+#m-left:hover {
+	border-top-color: #948816;
+}
+#m-right:hover {
+	border-bottom-color: #948816;
+}
+#m-back:hover {
+	border-bottom-color: #948816;
 }
