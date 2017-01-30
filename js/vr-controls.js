@@ -37,28 +37,25 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
   }
 
   this.onMouseDown = function ( event ) {
-
-    console.log("move forward");
+    console.log("mouse down");
     this.moveForward = true;
-
-    document.getElementById("m-forward").onmousedown = function(){
-      //console.log("move forward");
-      //this.moveForward = true;
-    }
-
   }
 
   this.onMouseUp = function ( event ) {
-
-    console.log("move forward stopped");
+    console.log("mouse up");
     this.moveForward = false;
-
-    document.getElementById("m-forward").onmouseup = function(){
-      //console.log("move forward stopped");
-      //this.moveForward = false;
-    }
-    
   }
+
+  this.onTouchStart = function ( event ) {
+    console.log("touch start");
+    this.moveForward = true;
+  }
+
+  this.onTouchEnd = function ( event ) {
+    console.log("touch end");
+    this.moveForward = false;
+  }
+
 
   this.onKeyDown = function ( event ) {
 
@@ -236,6 +233,9 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
     window.removeEventListener( 'mousedown', _onMouseDown, false );
     window.removeEventListener( 'mouseup', _onMouseUp, false );
 
+    window.removeEventListener( 'touchstart', _onTouchStart, false );
+    window.removeEventListener( 'touchend', _onTouchEnd, false );
+
   };
   
   var _onKeyDown = this.onKeyDown.bind(this);
@@ -244,10 +244,15 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
   var _onMouseDown = this.onMouseDown.bind(this);
   var _onMouseUp = this.onMouseUp.bind(this);
 
+  var _onTouchStart = this.onTouchStart.bind(this);
+  var _onTouchEnd = this.onTouchEnd.bind(this);
+
   window.addEventListener( 'keydown', _onKeyDown, false );
   window.addEventListener( 'keyup', _onKeyUp, false );
 
   window.addEventListener( 'mousedown', _onMouseDown, false );
   window.addEventListener( 'mouseup', _onMouseUp, false );
 
+  window.addEventListener( 'touchstart', _onTouchStart, false );
+  window.addEventListener( 'touchend', _onTouchEnd, false );
 };
