@@ -1,6 +1,6 @@
 
-function checkWoods() {
-
+function checkWoods(object) {
+  //console.log(object);
   //console.log(camera.position);
   if (camera.position.z > 12) { //bottom
     if (hasKey == true) {
@@ -27,7 +27,7 @@ function checkWoods() {
     }
   }
   if (camera.position.z < -12 || camera.position.z > 12 || camera.position.x > 12 || camera.position.x < -12) {
-    this.resetHero = true;
+    object.resetHero = true;
   }
 
 }

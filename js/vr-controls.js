@@ -37,37 +37,37 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
   }
 
   this.onMouseDown = function ( event ) {
-    console.log("mouse down");
-    checkWoods();
+    //console.log("mouse down");
+    checkWoods(this);
     this.moveForward = true;
   }
 
   this.onMouseUp = function ( event ) {
-    console.log("mouse up");
-    checkWoods();
+    //console.log("mouse up");
+    checkWoods(this);
     this.moveForward = false;
   }
 
   this.onTouchStart = function ( event ) {
-    console.log("touch start");
-    checkWoods();
+    //console.log("touch start");
+    checkWoods(this);
     this.moveForward = true;
   }
 
   this.onTouchEnd = function ( event ) {
-    console.log("touch end");
-    checkWoods();
+    //console.log("touch end");
+    checkWoods(this);
     this.moveForward = false;
   }
 
 
   this.onKeyDown = function ( event ) {
 
-    checkWoods();
+    checkWoods(this);
 
     switch ( event.keyCode ) {
       case 38: /*up*/
-      case 87: /*W*/ this.moveForward = true; console.log("w start"); break;
+      case 87: /*W*/ this.moveForward = true; break;
 
       case 37: /*left*/
       case 65: /*A*/ this.moveLeft = true; break;
@@ -86,11 +86,11 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
 
   this.onKeyUp = function ( event ) {
 
-    checkWoods();
+    checkWoods(this);
 
     switch ( event.keyCode ) {
       case 38: /*up*/
-      case 87: /*W*/ this.moveForward = false; console.log("w stop"); break;
+      case 87: /*W*/ this.moveForward = false; break;
 
       case 37: /*left*/
       case 65: /*A*/ this.moveLeft = false; break;
