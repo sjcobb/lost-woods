@@ -247,7 +247,7 @@ var sound4 = new THREE.PositionalAudio( listener );
 audioLoader.load( 'assets/sounds/ablast.ogg', function( buffer ) {
   sound4.setBuffer( buffer );
   sound4.setRefDistance( 0.015 );
-  sound4.setVolume(30);
+  sound4.setVolume(20);
   sound4.setLoop(true);
   sound4.play();
 });

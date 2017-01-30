@@ -15,7 +15,7 @@ document.getElementById("itemsDiv").innerHTML = itemsHTML;
 
 
 function updateInventory() {
-	console.log("updateInventory() called");
+	//console.log("updateInventory() called");
 	hasKey = true;
 	keyNum = 1;
 
@@ -45,9 +45,9 @@ function getQueryVariable(variable) {
 
 //console.log(getQueryVariable("id"));
 var queryKey = getQueryVariable("hasKey");
-console.log(queryKey);
+//console.log(queryKey);
 
 if (queryKey == "true") {
-	console.log("key queried");
+	//console.log("key queried");
 	updateInventory();
 }

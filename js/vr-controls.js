@@ -36,12 +36,36 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
     }.bind(this));
   }
 
+  this.onMouseDown = function ( event ) {
+
+    console.log("move forward");
+    this.moveForward = true;
+
+    document.getElementById("m-forward").onmousedown = function(){
+      //console.log("move forward");
+      //this.moveForward = true;
+    }
+
+  }
+
+  this.onMouseUp = function ( event ) {
+
+    console.log("move forward stopped");
+    this.moveForward = false;
+
+    document.getElementById("m-forward").onmouseup = function(){
+      //console.log("move forward stopped");
+      //this.moveForward = false;
+    }
+    
+  }
+
   this.onKeyDown = function ( event ) {
 
     switch ( event.keyCode ) {
 
       case 38: /*up*/
-      case 87: /*W*/ this.moveForward = true; break;
+      case 87: /*W*/ this.moveForward = true; console.log("w start"); break;
 
       case 37: /*left*/
       case 65: /*A*/ this.moveLeft = true; break;
@@ -93,7 +117,7 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
     switch ( event.keyCode ) {
 
       case 38: /*up*/
-      case 87: /*W*/ this.moveForward = false; break;
+      case 87: /*W*/ this.moveForward = false; console.log("w stop"); break;
 
       case 37: /*left*/
       case 65: /*A*/ this.moveLeft = false; break;
@@ -209,12 +233,21 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
     window.removeEventListener( 'keydown', _onKeyDown, false );
     window.removeEventListener( 'keyup', _onKeyUp, false );
 
+    window.removeEventListener( 'mousedown', _onMouseDown, false );
+    window.removeEventListener( 'mouseup', _onMouseUp, false );
+
   };
   
   var _onKeyDown = this.onKeyDown.bind(this);
   var _onKeyUp = this.onKeyUp.bind(this);
 
+  var _onMouseDown = this.onMouseDown.bind(this);
+  var _onMouseUp = this.onMouseUp.bind(this);
+
   window.addEventListener( 'keydown', _onKeyDown, false );
   window.addEventListener( 'keyup', _onKeyUp, false );
+
+  window.addEventListener( 'mousedown', _onMouseDown, false );
+  window.addEventListener( 'mouseup', _onMouseUp, false );
 
 };
