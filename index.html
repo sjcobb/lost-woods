@@ -2,53 +2,33 @@
 
 <html lang="en">
 <head>
-<title>The Lost Woods</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, shrink-to-fit=no">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<style>
-  body {
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    background-color: #0e5135;
-    color: #fff;
-    margin: 0px;
-    padding: 0;
-    overflow: hidden;
-  }
-</style>
+  <title>The Lost Woods</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, shrink-to-fit=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="stylesheet" type="text/css" href="css/custom.css">
 </head>
 
 <body>
-
+  <div id="movement-controls">
+    <div class="btn-container">
+      <div id="m-forward" class="btn"></div>
+      <div id="m-left" class="btn"></div>
+      <div id="m-right" class="btn"></div>
+      <div id="m-back" class="btn"></div>
+    </div>
+  </div>
 </body>
 
 <script>
-/*
- * Debug parameters.
- */
 WebVRConfig = {
-  /**
-   * webvr-polyfill configuration
-   */
-
-  // Forces availability of VR mode.
-  //FORCE_ENABLE_VR: true, // Default: false.
   BUFFER_SCALE: 0.5, // default: 1.0
 };
 </script>
 
-<!--
-  A polyfill for Promises. Needed for IE and Edge.
-  -->
 <script src="js/lib/es6-promise.min.js"></script>
-
-<!--
-  three.js 3d library
-  -->
 <script src="js/lib/three.min.js"></script>
 <!-- <script src="js/lib/FirstPersonControls.js"></script> -->
 <script src="js/inventory.js"></script>
@@ -57,25 +37,13 @@ WebVRConfig = {
 <script src="js/lib/MTLLoader.js"></script>
 <script src="js/lib/OBJLoader.js"></script>
 
-<!--
-  VRControls.js acquires positional information from connected VR devices and applies the transformations to a three.js camera object.
-   -->
-<script src="js/lib/VRControls.js"></script>
+<script src="js/lib/VRControls.js"></script> <!-- VRControls.js acquires positional information from connected VR devices and applies the transformations to a three.js camera object. -->
 
-<!--
-  VREffect.js handles stereo camera setup and rendering.
-  -->
-<script src="js/lib/VREffect.js"></script>
+<script src="js/lib/VREffect.js"></script><!-- VREffect.js handles stereo camera setup and rendering. -->
 
-<!--
-  A polyfill for WebVR using the Device{Motion,Orientation}Event API.
-  -->
-<script src="js/lib/webvr-polyfill.js"></script>
+<script src="js/lib/webvr-polyfill.js"></script> <!-- A polyfill for WebVR using the Device{Motion,Orientation}Event API. -->
 
-<!--
-  Helps enter and exit VR mode, provides best practices while in VR.
-  -->
-<script src="build/webvr-manager.js"></script>
+<script src="build/webvr-manager.js"></script> <!-- Helps enter and exit VR mode, provides best practices while in VR. -->
 
 <script src="js/custom.js"></script>
 
