@@ -208,10 +208,12 @@ mesh2.position.set(0, 2.5, 20);
 scene.add( mesh2 );
 
 var sound2 = new THREE.PositionalAudio( listener );
-audioLoader.load( 'assets/sounds/bolero-of-fire.mp3', function( buffer ) {
+//audioLoader.load( 'assets/sounds/bolero-of-fire.mp3', function( buffer ) {
+  audioLoader.load( 'assets/sounds/fire-temple.mp3', function( buffer ) {
   sound2.setBuffer( buffer );
   sound2.setRefDistance( 0.03 );
-  sound2.setVolume(50);
+  //sound2.setVolume(50);
+  sound2.setVolume(100);
   sound2.setLoop(true);
   sound2.play();
 });
