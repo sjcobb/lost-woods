@@ -11,7 +11,8 @@ function checkWoods(object) {
     }
   }
   if (camera.position.x < -12) { //left
-    window.location = "https://ybinstock.github.io/BatCave/";
+    window.location = "https://sjcobb.github.io/ice-cavern/";
+    //window.location = "https://ybinstock.github.io/BatCave/";
     //window.location = "https://ybinstock.github.io/Platos-Cave/";
     //window.location = "http://ybinstock.github.io/carmensandiego_360/";
     //window.location = "https://ybinstock.github.io/starstuff/";

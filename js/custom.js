@@ -226,12 +226,12 @@ mesh3.position.set(-20, 2.5, 0);
 scene.add( mesh3 );
 
 var sound3 = new THREE.PositionalAudio( listener );
-//audioLoader.load( 'assets/sounds/ice-cavern.mp3', function( buffer ) {
 //audioLoader.load( 'assets/sounds/carmen_audio_ending.mp3', function( buffer ) {
-audioLoader.load( 'assets/sounds/bats.mp3', function( buffer ) {
+//audioLoader.load( 'assets/sounds/bats.mp3', function( buffer ) {
+audioLoader.load( 'assets/sounds/ice-cavern.mp3', function( buffer ) {
   sound3.setBuffer( buffer );
   sound3.setRefDistance( 0.015 );
-  sound3.setVolume(20);
+  sound3.setVolume(40);
   sound3.setLoop(true);
   sound3.play();
 });
