@@ -209,11 +209,10 @@ scene.add( mesh2 );
 
 var sound2 = new THREE.PositionalAudio( listener );
 //audioLoader.load( 'assets/sounds/bolero-of-fire.mp3', function( buffer ) {
-  audioLoader.load( 'assets/sounds/fire-temple.mp3', function( buffer ) {
+  audioLoader.load( 'assets/sounds/ice-cavern.mp3', function( buffer ) {
   sound2.setBuffer( buffer );
   sound2.setRefDistance( 0.03 );
-  //sound2.setVolume(50);
-  sound2.setVolume(100);
+  sound2.setVolume(40);
   sound2.setLoop(true);
   sound2.play();
 });
@@ -228,10 +227,10 @@ scene.add( mesh3 );
 var sound3 = new THREE.PositionalAudio( listener );
 //audioLoader.load( 'assets/sounds/carmen_audio_ending.mp3', function( buffer ) {
 //audioLoader.load( 'assets/sounds/bats.mp3', function( buffer ) {
-audioLoader.load( 'assets/sounds/ice-cavern.mp3', function( buffer ) {
+  audioLoader.load( 'assets/sounds/fire-temple.mp3', function( buffer ) {
   sound3.setBuffer( buffer );
   sound3.setRefDistance( 0.015 );
-  sound3.setVolume(40);
+  sound3.setVolume(100);
   sound3.setLoop(true);
   sound3.play();
 });
@@ -244,7 +243,8 @@ mesh4.position.set(20, 2.5, 0);
 scene.add( mesh4 );
 
 var sound4 = new THREE.PositionalAudio( listener );
-audioLoader.load( 'assets/sounds/ablast.ogg', function( buffer ) {
+//audioLoader.load( 'assets/sounds/ablast.ogg', function( buffer ) {
+  audioLoader.load( 'assets/sounds/bats.mp3', function( buffer ) {
   sound4.setBuffer( buffer );
   sound4.setRefDistance( 0.015 );
   sound4.setVolume(20);
