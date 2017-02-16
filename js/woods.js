@@ -22,6 +22,7 @@ function checkWoods(object) {
     //window.location = "https://ybinstock.github.io/Platos-Cave/";
     //window.location = "http://ybinstock.github.io/carmensandiego_360/";
     //window.location = "https://ybinstock.github.io/starstuff/";
+    //window.location = "https://aurora.jam3.net/#!/";
   }
   if (camera.position.z < -8) { //top
     //console.log("key picked up");
