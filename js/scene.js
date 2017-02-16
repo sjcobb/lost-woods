@@ -37,9 +37,9 @@ var boxSize = 40;
 //var boxSize = 20;
 var loader = new THREE.TextureLoader();
 loader.load('img/box.png', onTextureLoaded);
-//loader.load('assets/textures/crate.gif', onTextureLoaded);
-//loader.load('assets/mc-textures/leaves_big_oak_opaque.png', onTextureLoaded);
+
 var dirt_texture = new THREE.TextureLoader().load( "assets/textures/dirt.png" );
+//var dirt_texture = new THREE.TextureLoader().load( "assets/textures/grass.png" );
 
 /* see: https://threejs.org/docs/api/textures/Texture.html */
 function onTextureLoaded(texture) {
@@ -50,7 +50,7 @@ function onTextureLoaded(texture) {
 
   var geometry = new THREE.BoxGeometry(boxSize, boxSize, boxSize);
   var material = new THREE.MeshBasicMaterial({
-    map: dirt_texture,
+    map: dirt_texture, //?
     //map: texture,
     color: 0x01BE00,
     //side: THREE.BackSide //inside 
@@ -71,17 +71,13 @@ function onTextureLoaded(texture) {
 ///////////
 // FLOOR //
 ///////////
-// note: 4x4 checkboard pattern scaled so that each square is 25 by 25 pixels.
-//var floorTexture = new THREE.ImageUtils.loadTexture( 'assets/textures/checkerboard.jpg' );
+//var floorTexture = new THREE.ImageUtils.loadTexture( 'assets/textures/grass.png' );
 var floorTexture = new THREE.ImageUtils.loadTexture( 'assets/textures/ground.png' );
-//floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
 floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
-floorTexture.repeat.set( 1, 1 );
-// DoubleSide: render texture on both sides of mesh
+floorTexture.repeat.set( 2, 2 );
 var floorMaterial = new THREE.MeshBasicMaterial( { map: floorTexture, side: THREE.DoubleSide } );
-var floorGeometry = new THREE.PlaneGeometry(60, 40, 1, 1); // e/w, n/s
+var floorGeometry = new THREE.PlaneGeometry(60, 40, 4, 4); // e/w, n/s
 var floor = new THREE.Mesh(floorGeometry, floorMaterial);
-//floor.position.y = -0.5;
 floor.position.y = -4.8; //lower = floor lowers
 floor.rotation.x = Math.PI / 2; // 1.57
 scene.add(floor);
