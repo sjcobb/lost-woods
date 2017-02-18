@@ -31,41 +31,44 @@ fpVrControls.movementSpeed = 10;
 var effect = new THREE.VREffect(renderer);
 effect.setSize(window.innerWidth, window.innerHeight);
 
+// Create a VR manager helper to enter and exit VR mode.
+var params = {
+  hideButton: false, // Default: false.
+  isUndistorted: false // Default: false.
+};
+var manager = new WebVRManager(renderer, effect, params);
 
-// Add a repeating grid as a skybox.
+/*** LOAD TEXTURES ***/
+/*** SKYBOX: http://www.custommapmakers.org/skyboxes.php ***/
+function loadSkyBox() {
+  var materials = [
+    createMaterial( 'assets/skybox/night-right.jpg' ), // right
+    createMaterial( 'assets/skybox/night-left.jpg' ), // left
+    createMaterial( 'assets/skybox/night-up.jpg' ), // top
+    createMaterial( 'assets/skybox/night-down.jpg' ), // bottom
+    createMaterial( 'assets/skybox/night-back.jpg' ), // back
+    createMaterial( 'assets/skybox/night-front.jpg' )  // front
+  ];
+  var mesh = new THREE.Mesh( new THREE.BoxGeometry( 10000, 10000, 10000, 1, 1, 1 ), new THREE.MeshFaceMaterial( materials ) );
+  mesh.scale.set(-1,1,1); // Set the x scale to be -1, this will turn the cube inside out
+  scene.add( mesh );  
+}
+ 
+function createMaterial( path ) {
+  var texture = THREE.ImageUtils.loadTexture(path);
+  var material = new THREE.MeshBasicMaterial( { map: texture, overdraw: 0.5 } );
+  return material; 
+}
+
 var boxSize = 40;
-//var boxSize = 20;
 var loader = new THREE.TextureLoader();
 loader.load('img/box.png', onTextureLoaded);
 
-var dirt_texture = new THREE.TextureLoader().load( "assets/textures/dirt.png" );
-//var dirt_texture = new THREE.TextureLoader().load( "assets/textures/grass.png" );
 
-/* see: https://threejs.org/docs/api/textures/Texture.html */
+
 function onTextureLoaded(texture) {
-  //texture.wrapS = THREE.RepeatWrapping;
-  //texture.wrapT = THREE.RepeatWrapping;
-  //texture.repeat.set(boxSize, boxSize);
-  //texture.repeat.set( 5, 5 ); //how many times the texture is repeated across the surface, in each direction U and V
-
-  var geometry = new THREE.BoxGeometry(boxSize, boxSize, boxSize);
-  var material = new THREE.MeshBasicMaterial({
-    map: dirt_texture, //?
-    //map: texture,
-    color: 0x01BE00,
-    //side: THREE.BackSide //inside 
-    //side: THREE.FrontSide //outside
-    side: THREE.DoubleSide //both
-  });
-
-  // Align the skybox to the floor (which is at y=0).
-  skybox = new THREE.Mesh(geometry, material);
-  //skybox.position.y = boxSize/2;
-  skybox.position.y = 2.5; //grid box way above
-  //scene.add(skybox);
-
-  // For high end VR devices like Vive and Oculus, take into account the stage parameters provided.
-  setupStage();
+  loadSkyBox();
+  setupStage(); // For high end VR devices like Vive and Oculus, take into account the stage parameters provided.
 }
 
 ///////////
@@ -126,13 +129,6 @@ wall4.position.y = wall_y_pos;
 wall4.position.z = 0; //further away
 wall4.rotation.y = Math.PI / 2;
 scene.add(wall4);
-
-// Create a VR manager helper to enter and exit VR mode.
-var params = {
-  hideButton: false, // Default: false.
-  isUndistorted: false // Default: false.
-};
-var manager = new WebVRManager(renderer, effect, params);
 
 /////////////
 // OBJECTS //
