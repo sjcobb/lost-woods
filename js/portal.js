@@ -13,7 +13,7 @@ var portal = {
   "fire_temple" : {
     "link": "https://sjcobb.github.io/fire-temple",
     "song": "assets/sounds/fire-temple.mp3",
-    "volume": 100
+    "volume": 80
   },
   "ice_cavern" : {
     "link": "https://sjcobb.github.io/ice-cavern",
@@ -28,15 +28,19 @@ var portal = {
   "a_blast" : {
     "link": "https://aframe.io/a-blast",
     "song": "assets/sounds/ablast.ogg",
-    "volume": 10
+    "volume": 8
   },
   "aurora" : {
     "link": "https://aurora.jam3.net/#!/",
     "song": "assets/sounds/aurora.mp3",
-    "volume": 20
+    "volume": 30
   }
 };
-//console.log(portal);
+
+var lost_reset = {
+  "song": "assets/sounds/lost-woods.mp3",
+  "volume": 100
+};
 
 //http://stackoverflow.com/questions/2532218/pick-random-property-from-a-javascript-object
 var randomProperty = function (obj) {
@@ -51,12 +55,30 @@ var randomProperty = function (obj) {
 };
 
 
-//console.log(portal);
 var top_portal = randomProperty(portal);
 var right_portal = randomProperty(portal);
 var bottom_portal = randomProperty(portal);
 var left_portal = randomProperty(portal);
-//console.log(portal);
+
+var reset_portal = Math.floor(Math.random()*4);
+switch (reset_portal) {
+  case 0:
+    var top_portal = lost_reset;
+    var top_reset = true;
+    break;
+  case 1:
+    var right_portal = lost_reset;
+    var right_reset = true;
+    break;
+  case 2:
+    var bottom_portal = lost_reset;
+    var bottom_reset = true;
+    break;
+  case 3:
+    var left_portal = lost_reset;
+    var left_reset = true;
+    break;
+}
 
 console.log("top: ");
 console.log(top_portal);

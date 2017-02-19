@@ -19,7 +19,9 @@ function checkWoods(object) {
 
   /* TOP PORTAL */
   if (camera.position.z < -12) {
-    if (hasKey == true) {
+    if (top_reset == true) {
+      object.resetHero = true;
+    } else if (hasKey == true) {
       window.location = top_portal.link + "/?hasKey=true"
     } else {
       window.location = top_portal.link;
@@ -27,24 +29,32 @@ function checkWoods(object) {
   }
 
   /* RIGHT PORTAL */
-  if (camera.position.x > 12) { //RIGHT
-    if (hasKey == true) {
+  if (camera.position.x > 12) {
+    if (right_reset == true) {
+      object.resetHero = true;
+    } else if (hasKey == true) {
       window.location = right_portal.link + "/?hasKey=true"
     } else {
       window.location = right_portal.link;
     }
   }
+
   /* BOTTOM PORTAL */
-  if (camera.position.z > 12) { //BOTTOM
-    if (hasKey == true) {
+  if (camera.position.z > 12) {
+    if (bottom_reset == true) {
+      object.resetHero = true;
+    } else if (hasKey == true) {
       window.location = bottom_portal.link + "/?hasKey=true"
     } else {
       window.location = bottom_portal.link;
     }
   }
+
   /* LEFT PORTAL */
-  if (camera.position.x < -12) { //LEFT
-    if (hasKey == true) {
+  if (camera.position.x < -12) {
+    if (left_reset == true) {
+      object.resetHero = true;
+    } else if (hasKey == true) {
       window.location = left_portal.link + "/?hasKey=true"
     } else {
       window.location = left_portal.link;
