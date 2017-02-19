@@ -5,7 +5,7 @@
 "https://aframe.io/a-blast"
 "https://ybinstock.github.io/BatCave"
 "https://ybinstock.github.io/Platos-Cave"
-"http://ybinstock.github.io/carmensandiego_360"
+"http://ybinstock.github.io/carmensandiego_360", "assets/sounds/carmen_audio_ending.mp3"
 "https://ybinstock.github.io/starstuff"
 "https://aurora.jam3.net/#!"
 */
@@ -32,7 +32,7 @@ var portal = {
   },
   "aurora" : {
     "link": "https://aurora.jam3.net/#!/",
-    "song": "assets/sounds/carmen_audio_ending.mp3",
+    "song": "assets/sounds/aurora.mp3",
     "volume": 20
   }
 };
