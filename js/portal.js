@@ -1,6 +1,14 @@
 /*
  *** PORTAL JS ***
 */
+/*
+"https://aframe.io/a-blast"
+"https://ybinstock.github.io/BatCave"
+"https://ybinstock.github.io/Platos-Cave"
+"http://ybinstock.github.io/carmensandiego_360"
+"https://ybinstock.github.io/starstuff"
+"https://aurora.jam3.net/#!"
+*/
 var portal = {
   "fire_temple" : {
     "link": "https://sjcobb.github.io/fire-temple",
@@ -23,13 +31,33 @@ var portal = {
     "song": "assets/sounds/carmen_audio_ending.mp3"
   }
 };
-console.log(portal);
+//console.log(portal);
 
-/*
-"https://aframe.io/a-blast"
-"https://ybinstock.github.io/BatCave"
-"https://ybinstock.github.io/Platos-Cave"
-"http://ybinstock.github.io/carmensandiego_360"
-"https://ybinstock.github.io/starstuff"
-"https://aurora.jam3.net/#!"
-*/
+//http://stackoverflow.com/questions/2532218/pick-random-property-from-a-javascript-object
+var randomProperty = function (obj) {
+    //delete obj.fire_temple;
+    var keys = Object.keys(obj);
+    var rdm_key = keys.length * Math.random() << 0;
+    var rdm_portal = obj[keys[rdm_key]];
+    //console.log(rdm_key);
+    //console.log(obj[keys[rdm_key]]);
+    delete obj[keys[rdm_key]];
+    return rdm_portal;
+};
+
+
+//console.log(portal);
+var top_portal = randomProperty(portal);
+var right_portal = randomProperty(portal);
+var bottom_portal = randomProperty(portal);
+var left_portal = randomProperty(portal);
+//console.log(portal);
+
+console.log("top: ");
+console.log(top_portal);
+console.log("right: ");
+console.log(right_portal);
+console.log("bottom: ");
+console.log(bottom_portal);
+console.log("left: ");
+console.log(left_portal);
