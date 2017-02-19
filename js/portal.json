@@ -1,0 +1,16 @@
+"fire-temple" : {
+        "link": "https://sjcobb.github.io/fire-temple",
+        "song": "assets/sounds/fire-temple.mp3"
+    },
+"ice-cavern" : {
+        "link": "https://sjcobb.github.io/ice-cavern",
+        "song": "assets/sounds/ice-cavern.mp3"
+    },
+"bat-cave" : {
+        "link": "https://ybinstock.github.io/BatCave",
+        "song": "assets/sounds/bats.mp3"
+    },
+"a-blast" : {
+        "link": "https://aframe.io/a-blast",
+        "song": "assets/sounds/ablast.ogg"
+    }
