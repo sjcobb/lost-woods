@@ -160,8 +160,10 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
       var resetOptions = ["top", "right", "bottom", "left"];
       var resetPick = resetOptions[Math.floor(Math.random()*resetOptions.length)];
       console.log("Reset to: " + resetPick);
+      //console.log(camera);
       //console.log(camera.getWorldDirection());
 
+      //try: http://gamedev.stackexchange.com/questions/29662/how-to-rotate-an-object-so-it-stands-correctly-back-always-facing-the-camera
       switch (resetPick) {
         case "top": 
           this.object.position.z = -10;
@@ -171,7 +173,7 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
         case "right":
           this.object.position.z = 0;
           this.object.position.x = 10;
-          this.angle = 1.57;  
+          this.angle = 1.57;
           break;
         case "bottom":
           this.object.position.z = 10;
@@ -181,7 +183,8 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
         case "left":
           this.object.position.z = 0;
           this.object.position.x = -10;
-          this.angle = 4.71;
+          //this.angle = 2.355;
+          this.angle = 1.57;
           break;
       }
       /* Stage Transitions */
@@ -195,6 +198,10 @@ THREE.FirstPersonVRControls = function ( camera, scene ) {
 
       //console.log(this.angle);
       this.angleQuaternion.setFromAxisAngle(YAXIS, this.angle);
+
+      //camera.rotation.set(0, 0, 0);
+      //camera.rotation.z = 0;
+
       this.resetHero = false;
     }
 
