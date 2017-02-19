@@ -12,23 +12,28 @@
 var portal = {
   "fire_temple" : {
     "link": "https://sjcobb.github.io/fire-temple",
-    "song": "assets/sounds/fire-temple.mp3"
+    "song": "assets/sounds/fire-temple.mp3",
+    "volume": 100
   },
   "ice_cavern" : {
     "link": "https://sjcobb.github.io/ice-cavern",
-    "song": "assets/sounds/ice-cavern.mp3"
+    "song": "assets/sounds/ice-cavern.mp3",
+    "volume": 40
   },
   "bat_cave" : {
     "link": "https://ybinstock.github.io/BatCave",
-    "song": "assets/sounds/bats.mp3"
+    "song": "assets/sounds/bats.mp3",
+    "volume": 10
   },
   "a_blast" : {
     "link": "https://aframe.io/a-blast",
-    "song": "assets/sounds/ablast.ogg"
+    "song": "assets/sounds/ablast.ogg",
+    "volume": 10
   },
   "aurora" : {
     "link": "https://aurora.jam3.net/#!/",
-    "song": "assets/sounds/carmen_audio_ending.mp3"
+    "song": "assets/sounds/carmen_audio_ending.mp3",
+    "volume": 20
   }
 };
 //console.log(portal);
