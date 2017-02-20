@@ -1,13 +1,21 @@
 /*
  *** SONG JS ***
 */
-var top_sound,
+var top_mesh,
+    right_mesh,
+    bottom_mesh,
+    left_mesh,
+    top_sound,
     right_sound,
     bottom_sound,
-    left_sound;
+    left_sound,
+    song_reset = false;
+
+var listener = new THREE.AudioListener();
 
 function songBuilder() {
-  var listener = new THREE.AudioListener();
+  stopSongs();
+
   camera.add( listener );
 
   // sound spheres
@@ -72,4 +80,25 @@ function songBuilder() {
   });
   left_mesh.add( left_sound );
   
+}
+
+function stopSongs() {
+  console.log(top_sound.isPlaying);
+  if (top_sound.isPlaying == true) {
+    top_sound.stop;
+  }
+  if (right_sound.isPlaying == true) {
+    right_sound.stop;
+  }
+  if (bottom_sound.isPlaying == true) {
+    bottom_sound.stop;
+  }
+  if (left_sound.isPlaying == true) {
+    left_sound.stop;
+  }
+  song_reset = false;
+
+  if (song_reset == true) {
+
+  }
 }

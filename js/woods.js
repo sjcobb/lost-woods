@@ -63,18 +63,13 @@ function checkWoods(object) {
 
   /* RESET HERO */
   if (camera.position.z < -12 || camera.position.z > 12 || camera.position.x > 12 || camera.position.x < -12) {
+    console.log("reset ran");
     portalUpdate();
+    song_reset = true;
     songBuilder();
-    /*top_sound.pause();
-    right_sound.pause();
-    bottom_sound.pause();
-    left_sound.pause();*/
-    object.resetHero = true;
-    //testFunc();
+    stopSongs();
+
+    //object.resetHero = true;
   }
 
-}
-
-function testFunc() {
-  console.log("TEST");
 }
