@@ -1,6 +1,10 @@
 /*
  *** SONG JS ***
 */
+var top_sound,
+    right_sound,
+    bottom_sound,
+    left_sound;
 
 function songBuilder() {
   var listener = new THREE.AudioListener();
@@ -16,7 +20,7 @@ function songBuilder() {
   var top_mesh = new THREE.Mesh( sphere, material_sphere1 );
   top_mesh.position.set(0, 2.5, -20);
   scene.add( top_mesh );
-  var top_sound = new THREE.PositionalAudio( listener );
+  top_sound = new THREE.PositionalAudio( listener );
   audioLoader.load( top_portal.song, function( buffer ) {
     top_sound.setBuffer( buffer );
     top_sound.setRefDistance( 0.03 );
@@ -30,7 +34,7 @@ function songBuilder() {
   var right_mesh = new THREE.Mesh( sphere, material_sphere1 );
   right_mesh.position.set(20, 2.5, 0);
   scene.add( right_mesh );
-  var right_sound = new THREE.PositionalAudio( listener );
+  right_sound = new THREE.PositionalAudio( listener );
     audioLoader.load( right_portal.song, function( buffer ) {
     right_sound.setBuffer( buffer );
     right_sound.setRefDistance( 0.015 );
@@ -44,7 +48,7 @@ function songBuilder() {
   var bottom_mesh = new THREE.Mesh( sphere, material_sphere1 );
   bottom_mesh.position.set(0, 2.5, 20);
   scene.add( bottom_mesh );
-  var bottom_sound = new THREE.PositionalAudio( listener );
+  bottom_sound = new THREE.PositionalAudio( listener );
     audioLoader.load( bottom_portal.song, function( buffer ) {
     bottom_sound.setBuffer( buffer );
     bottom_sound.setRefDistance( 0.03 );
@@ -58,7 +62,7 @@ function songBuilder() {
   var left_mesh = new THREE.Mesh( sphere, material_sphere1 );
   left_mesh.position.set(-20, 2.5, 0);
   scene.add( left_mesh );
-  var left_sound = new THREE.PositionalAudio( listener );
+  left_sound = new THREE.PositionalAudio( listener );
     audioLoader.load( left_portal.song, function( buffer ) {
     left_sound.setBuffer( buffer );
     left_sound.setRefDistance( 0.015 );

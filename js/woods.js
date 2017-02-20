@@ -22,9 +22,9 @@ function checkWoods(object) {
     if (top_reset == true) {
       object.resetHero = true;
     } else if (hasKey == true) {
-      //window.location = top_portal.link + "/?hasKey=true"
+      window.location = top_portal.link + "/?hasKey=true"
     } else {
-      //window.location = top_portal.link;
+      window.location = top_portal.link;
     }
   }
 
@@ -33,9 +33,9 @@ function checkWoods(object) {
     if (right_reset == true) {
       object.resetHero = true;
     } else if (hasKey == true) {
-      //window.location = right_portal.link + "/?hasKey=true"
+      window.location = right_portal.link + "/?hasKey=true"
     } else {
-      //window.location = right_portal.link;
+      window.location = right_portal.link;
     }
   }
 
@@ -44,9 +44,9 @@ function checkWoods(object) {
     if (bottom_reset == true) {
       object.resetHero = true;
     } else if (hasKey == true) {
-      //window.location = bottom_portal.link + "/?hasKey=true"
+      window.location = bottom_portal.link + "/?hasKey=true"
     } else {
-      //window.location = bottom_portal.link;
+      window.location = bottom_portal.link;
     }
   }
 
@@ -55,15 +55,26 @@ function checkWoods(object) {
     if (left_reset == true) {
       object.resetHero = true;
     } else if (hasKey == true) {
-      //window.location = left_portal.link + "/?hasKey=true"
+      window.location = left_portal.link + "/?hasKey=true"
     } else {
-      //window.location = left_portal.link;
+      window.location = left_portal.link;
     }
   }
 
   /* RESET HERO */
   if (camera.position.z < -12 || camera.position.z > 12 || camera.position.x > 12 || camera.position.x < -12) {
+    portalUpdate();
+    songBuilder();
+    /*top_sound.pause();
+    right_sound.pause();
+    bottom_sound.pause();
+    left_sound.pause();*/
     object.resetHero = true;
+    //testFunc();
   }
 
+}
+
+function testFunc() {
+  console.log("TEST");
 }

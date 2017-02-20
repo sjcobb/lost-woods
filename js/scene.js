@@ -168,6 +168,7 @@ scene.add(keyMesh);
 ///////////
 // SOUND //
 ///////////
+portalUpdate();
 songBuilder();
 
 ///////////////////
