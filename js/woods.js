@@ -66,8 +66,9 @@ function checkWoods(object) {
     console.log("reset ran");
     portalUpdate();
     song_reset = true;
-    songBuilder();
     stopSongs();
+    //updSongs();
+    songBuilder();
 
     //object.resetHero = true;
   }
