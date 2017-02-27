@@ -30,7 +30,7 @@ function portalUpdate() {
     "ice_cavern" : {
       "link": "https://sjcobb.github.io/ice-cavern",
       "song": "assets/sounds/ice-cavern.mp3",
-      "volume": 40
+      "volume": 50
     },
     "bat_cave" : {
       "link": "https://ybinstock.github.io/BatCave",

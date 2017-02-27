@@ -32,7 +32,7 @@ function songBuilder() {
   top_sound = new THREE.PositionalAudio( listener );
   audioLoader.load( top_portal.song, function( buffer ) {
     top_sound.setBuffer( buffer );
-    top_sound.setRefDistance( 0.03 );
+    top_sound.setRefDistance( 0.01 );
     top_sound.setVolume(top_portal.volume);
     top_sound.setLoop(true);
     top_sound.play();
@@ -46,7 +46,7 @@ function songBuilder() {
   right_sound = new THREE.PositionalAudio( listener );
     audioLoader.load( right_portal.song, function( buffer ) {
     right_sound.setBuffer( buffer );
-    right_sound.setRefDistance( 0.015 );
+    right_sound.setRefDistance( 0.01 );
     right_sound.setVolume(right_portal.volume);
     right_sound.setLoop(true);
     right_sound.play();
@@ -60,7 +60,7 @@ function songBuilder() {
   bottom_sound = new THREE.PositionalAudio( listener );
     audioLoader.load( bottom_portal.song, function( buffer ) {
     bottom_sound.setBuffer( buffer );
-    bottom_sound.setRefDistance( 0.03 );
+    bottom_sound.setRefDistance( 0.01 );
     bottom_sound.setVolume(bottom_portal.volume);
     bottom_sound.setLoop(true);
     bottom_sound.play();
@@ -74,7 +74,7 @@ function songBuilder() {
   left_sound = new THREE.PositionalAudio( listener );
     audioLoader.load( left_portal.song, function( buffer ) {
     left_sound.setBuffer( buffer );
-    left_sound.setRefDistance( 0.015 );
+    left_sound.setRefDistance( 0.01 );
     left_sound.setVolume(left_portal.volume);
     left_sound.setLoop(true);
     left_sound.play();
@@ -84,23 +84,21 @@ function songBuilder() {
 }
 
 function stopSongs() {
-  console.log(top_sound.isPlaying);
-  if (top_sound.isPlaying == true) {
-    top_sound.pause();
-  }
-  if (right_sound.isPlaying == true) {
-    right_sound.pause();
-  }
-  if (bottom_sound.isPlaying == true) {
-    bottom_sound.pause();
-  }
-  if (left_sound.isPlaying == true) {
-    left_sound.pause();
-  }
-  song_reset = false;
-
   if (song_reset == true) {
-
+    console.log(top_sound.isPlaying);
+    if (top_sound.isPlaying == true) {
+      top_sound.pause();
+    }
+    if (right_sound.isPlaying == true) {
+      right_sound.pause();
+    }
+    if (bottom_sound.isPlaying == true) {
+      bottom_sound.pause();
+    }
+    if (left_sound.isPlaying == true) {
+      left_sound.pause();
+    }
+    song_reset = false;
   }
 }
 

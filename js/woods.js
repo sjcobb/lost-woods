@@ -8,6 +8,9 @@ function checkWoods(object) {
   //console.log(object);
   //console.log(camera.position);
 
+  var pos_edge = 13;
+  var neg_edge = -13;
+
   /* KEY PICKUP */
   if (camera.position.z < -8) {
     //console.log("key picked up");
@@ -18,7 +21,7 @@ function checkWoods(object) {
   }
 
   /* TOP PORTAL */
-  if (camera.position.z < -12) {
+  if (camera.position.z < neg_edge) {
     if (top_reset == true) {
       object.resetHero = true;
     } else if (hasKey == true) {
@@ -29,7 +32,7 @@ function checkWoods(object) {
   }
 
   /* RIGHT PORTAL */
-  if (camera.position.x > 12) {
+  if (camera.position.x > pos_edge) {
     if (right_reset == true) {
       object.resetHero = true;
     } else if (hasKey == true) {
@@ -40,7 +43,7 @@ function checkWoods(object) {
   }
 
   /* BOTTOM PORTAL */
-  if (camera.position.z > 12) {
+  if (camera.position.z > pos_edge) {
     if (bottom_reset == true) {
       object.resetHero = true;
     } else if (hasKey == true) {
@@ -51,7 +54,7 @@ function checkWoods(object) {
   }
 
   /* LEFT PORTAL */
-  if (camera.position.x < -12) {
+  if (camera.position.x < neg_edge) {
     if (left_reset == true) {
       object.resetHero = true;
     } else if (hasKey == true) {
@@ -62,7 +65,7 @@ function checkWoods(object) {
   }
 
   /* RESET HERO */
-  if (camera.position.z < -12 || camera.position.z > 12 || camera.position.x > 12 || camera.position.x < -12) {
+  if (camera.position.z < neg_edge || camera.position.z > pos_edge || camera.position.x > pos_edge || camera.position.x < neg_edge) {
     console.log("reset ran");
     portalUpdate();
     song_reset = true;
