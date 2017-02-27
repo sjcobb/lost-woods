@@ -46,6 +46,11 @@ function portalUpdate() {
       "link": "https://aurora.jam3.net/#!/",
       "song": "assets/sounds/aurora.mp3",
       "volume": 30
+    },
+    "plato" : {
+      "link": "https://ybinstock.github.io/Platos-Cave",
+      "song": "assets/sounds/plato-script.mp3",
+      "volume": 30
     }
   };
 
