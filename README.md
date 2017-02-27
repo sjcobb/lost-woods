@@ -19,3 +19,6 @@ Like most things on the web, there isn't one best way to go about creating a Web
 There are a few places online with [curated lists](http://vrlist.io/) of VR experiences, I want the Lost Woods to serve that purpose but keep the user immersed. Another difference is I want to include all types of demos, no matter how half-baked. As the number grows, I will sort them by popularity (or some other criteria).
 
 I also want to explore sharing gameplay elements between sites. For example, you find a key in my game that unlocks a door in your game. I am exploring this now in the [Fire Temple](https://github.com/sjcobb/fire-temple), but it isn't complete yet.
+
+## Issues
+Pull requests are welcome. All I currently have to test with is a Google Cardboard headset so I could use help supporting the higher end VR systems.
