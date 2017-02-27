@@ -55,7 +55,7 @@ function loadSkyBox() {
 }
  
 function createMaterial( path ) {
-  var texture = THREE.ImageUtils.loadTexture(path);
+  var texture = loader.load(path);
   var material = new THREE.MeshBasicMaterial( { map: texture, overdraw: 0.5 } );
   return material; 
 }
@@ -75,7 +75,8 @@ function onTextureLoaded(texture) {
 // FLOOR //
 ///////////
 //var floorTexture = new THREE.ImageUtils.loadTexture( 'assets/textures/grass.png' );
-var floorTexture = new THREE.ImageUtils.loadTexture( 'assets/textures/ground.png' );
+//var floorTexture = new THREE.ImageUtils.loadTexture( 'assets/textures/ground.png' );
+var floorTexture = loader.load( 'assets/textures/ground.png' );
 floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
 floorTexture.repeat.set( 2, 2 );
 var floorMaterial = new THREE.MeshBasicMaterial( { map: floorTexture, side: THREE.DoubleSide } );
@@ -90,7 +91,7 @@ scene.add(floor);
 ///////////
 var wall_y_pos = -2.3;
 //var wallTexture = new THREE.ImageUtils.loadTexture( 'assets/textures/checkerboard.jpg' );
-var wallTexture = new THREE.ImageUtils.loadTexture( 'assets/textures/wall.png' );
+var wallTexture = loader.load( 'assets/textures/wall.png' );
 wallTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
 wallTexture.repeat.set( 1, 1 );
 // DoubleSide: render texture on both sides of mesh
@@ -147,7 +148,7 @@ sign.position.set(-4.75, 0.25, -4.75); //left-right, top-down, forward-back
 
 /* SILVER KEY */
 //var keyTexture = new THREE.ImageUtils.loadTexture( 'assets/items/key-silver.png' );
-var keyTexture = new THREE.ImageUtils.loadTexture( 'assets/items/key-gold.png' );
+var keyTexture = loader.load( 'assets/items/key-gold.png' );
 keyTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
 keyTexture.repeat.set( 1, 1 );
 // DoubleSide: render texture on both sides of mesh
