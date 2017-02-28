@@ -32,6 +32,11 @@ function portalUpdate() {
       "song": "assets/sounds/ice-cavern.mp3",
       "volume": 50
     },
+    "lake_hylia" : {
+      "link": "https://sjcobb.github.io/lake-hylia",
+      "song": "assets/sounds/lake-hylia.mp3",
+      "volume": 70
+    },
     "bat_cave" : {
       "link": "https://ybinstock.github.io/BatCave",
       "song": "assets/sounds/bats.mp3",
