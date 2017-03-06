@@ -45,7 +45,7 @@ function portalUpdate() {
     "a_blast" : {
       "link": "https://aframe.io/a-blast",
       "song": "assets/sounds/ablast.ogg",
-      "volume": 8
+      "volume": 10
     },
     "aurora" : {
       "link": "https://aurora.jam3.net/#!/",

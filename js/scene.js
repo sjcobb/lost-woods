@@ -231,11 +231,9 @@ function animate(timestamp) {
   // Apply rotation to cube mesh
   cube.rotation.y += delta * 0.0006;
 
+  renderNavi();
+  
   controls.update();
-  // Render the scene through the manager.
-
-  // Update FirstPersonControls after VRControls.
-  // FirstPersonControls requires a timestamp.
   vrControls.update();
   fpVrControls.update(timestamp);
 
