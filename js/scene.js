@@ -38,6 +38,9 @@ var params = {
 };
 var manager = new WebVRManager(renderer, effect, params);
 
+window.addEventListener('resize', onResize, true);
+window.addEventListener('vrdisplaypresentchange', onResize, true);
+
 /*** LOAD TEXTURES ***/
 /*** SKYBOX: http://www.custommapmakers.org/skyboxes.php ***/
 function loadSkyBox() {
@@ -175,14 +178,17 @@ songBuilder();
 ///////////////////
 // LIGHT / MODEL //
 ///////////////////
-/*var ambient = new THREE.AmbientLight( 0x444444 );
-//var ambient = new THREE.AmbientLight( 0x101030 );
-scene.add( ambient );
+var ambientLight = new THREE.AmbientLight( 0x444444 );
+scene.add( ambientLight );
 
 var directionalLight = new THREE.DirectionalLight( 0xffeedd );
 directionalLight.position.set( 0, 0, 1 ).normalize();
 scene.add( directionalLight );
 
+//var pointLight = new THREE.PointLight(0xffffff);
+//scene.add( pointLight );
+
+/*
 var onProgress = function ( xhr ) {
   if ( xhr.lengthComputable ) {
     var percentComplete = xhr.loaded / xhr.total * 100;
@@ -217,10 +223,6 @@ mtlLoader.load( 'model.mtl', function( materials ) {
   }, onProgress, onError );
 
 });*/
-
-
-window.addEventListener('resize', onResize, true);
-window.addEventListener('vrdisplaypresentchange', onResize, true);
 
 // Request animation frame loop function
 var lastRender = 0;
