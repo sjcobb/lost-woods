@@ -27,7 +27,7 @@ wing2.rotation.z = 2.28;
 wing2.position.x = 0.30;
 
 var spriteMaterial = new THREE.SpriteMaterial({ 
-  map: loader.load( 'assets/navi/glow.png' ), 
+  map: loader.load( '//lost-woods.com/assets/navi/glow.png' ), 
   useScreenCoordinates: false, 
   //alignment: THREE.SpriteAlignment.center,
   color: 0x0000ff, 
@@ -50,7 +50,7 @@ navi.rotation.z = 0.3;
 scene.add(navi);
 
 var navi_sound = new THREE.PositionalAudio( listener );
-audioLoader.load( 'assets/navi/OOT_Navi_Listen1.wav', function( buffer ) {
+audioLoader.load( '//lost-woods.com/assets/navi/OOT_Navi_Listen1.wav', function( buffer ) {
   navi_sound.setBuffer( buffer );
   navi_sound.setRefDistance( 0.03 );
   navi_sound.setVolume(100);
