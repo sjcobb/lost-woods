@@ -27,7 +27,7 @@ wing2.rotation.z = 2.28;
 wing2.position.x = 0.30;
 
 var spriteMaterial = new THREE.SpriteMaterial({ 
-  map: loader.load( 'http://lost-woods.com/assets/navi/glow.png' ), 
+  map: loader.load( 'https://sjcobb.github.io/lake-hylia/assets/navi/glow.png' ), 
   useScreenCoordinates: false, 
   //alignment: THREE.SpriteAlignment.center,
   color: 0x0000ff, 
@@ -50,24 +50,26 @@ navi.rotation.z = 0.3;
 scene.add(navi);
 
 var navi_sound = new THREE.PositionalAudio( listener );
-audioLoader.load( 'http://lost-woods.com/assets/navi/OOT_Navi_Listen1.wav', function( buffer ) {
+audioLoader.load( 'https://sjcobb.github.io/lake-hylia/assets/navi/OOT_Navi_Listen1.wav', function( buffer ) {
   navi_sound.setBuffer( buffer );
   navi_sound.setRefDistance( 0.03 );
   navi_sound.setVolume(100);
   //navi_sound.setLoop(true);
-  navi_sound.play();
+  //navi_sound.play();
 });
 navi.add( navi_sound );
 
 var rdm_shift = 0;
 setInterval(function() {
-  //rdm_shift = Math.random() - 0.2;
   rdm_shift = Math.random();
-  //console.log(rdm_shift);
 }, 3000);
-setInterval(function() {
+
+setTimeout(function() {
   navi_sound.play();
-}, 18000);
+  setInterval(function() {
+    navi_sound.play();
+  }, 27000);
+}, 6000);
 
 function renderNavi() {
   var navi_shiftx = camera.position.x - 1.3 - rdm_shift;
