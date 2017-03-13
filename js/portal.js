@@ -25,57 +25,52 @@ function portalUpdate() {
     "fire_temple" : {
       "link": "https://sjcobb.github.io/fire-temple",
       "song": "assets/sounds/fire-temple.mp3",
-      "volume": 80
+      "volume": 100
     },
     "ice_cavern" : {
       "link": "https://sjcobb.github.io/ice-cavern",
       "song": "assets/sounds/ice-cavern.mp3",
-      "volume": 50
+      "volume": 70
     },
     "lake_hylia" : {
       "link": "https://sjcobb.github.io/lake-hylia",
       "song": "assets/sounds/lake-hylia.mp3",
-      "volume": 70
+      "volume": 80
     },
     "bat_cave" : {
       "link": "https://ybinstock.github.io/BatCave",
       "song": "assets/sounds/bats.mp3",
-      "volume": 10
+      "volume": 20
     },
     "a_blast" : {
       "link": "https://aframe.io/a-blast",
       "song": "assets/sounds/ablast.ogg",
-      "volume": 10
+      "volume": 20
     },
     "aurora" : {
       "link": "https://aurora.jam3.net/#!/",
       "song": "assets/sounds/aurora.mp3",
-      "volume": 30
+      "volume": 40
     },
     "plato" : {
       "link": "https://ybinstock.github.io/Platos-Cave",
       "song": "assets/sounds/plato-script.mp3",
-      "volume": 30
+      "volume": 50
     }
   };
 
   var lost_reset = {
     "song": "assets/sounds/lost-woods.mp3",
-    "volume": 100
+    "volume": 120
   };
 
-  //http://stackoverflow.com/questions/2532218/pick-random-property-from-a-javascript-object
   var randomProperty = function (obj) {
-      //delete obj.fire_temple;
       var keys = Object.keys(obj);
       var rdm_key = keys.length * Math.random() << 0;
       var rdm_portal = obj[keys[rdm_key]];
-      //console.log(rdm_key);
-      //console.log(obj[keys[rdm_key]]);
       delete obj[keys[rdm_key]];
       return rdm_portal;
   };
-
 
   top_portal = randomProperty(portal);
   right_portal = randomProperty(portal);
