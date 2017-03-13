@@ -10,17 +10,10 @@ renderer.setPixelRatio(window.devicePixelRatio);
 // Append the canvas element created by the renderer to document body element.
 document.body.appendChild(renderer.domElement);
 
-// Create a three.js scene.
 var scene = new THREE.Scene();
-
-// Create a three.js camera.
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000);
 
-var controls = new THREE.VRControls(camera);
-controls.standing = true; //raise user above ground
-
 /*** VR Controls ***/
-// Create VRControls in addition to FirstPersonVRControls.
 var vrControls = new THREE.VRControls(camera);
 //vrControls.standing = true;
 var fpVrControls = new THREE.FirstPersonVRControls(camera, scene);
@@ -65,9 +58,7 @@ function createMaterial( path ) {
 
 var boxSize = 40;
 var loader = new THREE.TextureLoader();
-loader.load('img/box.png', onTextureLoaded);
-
-
+loader.load('assets/textures/ground.png', onTextureLoaded);
 
 function onTextureLoaded(texture) {
   loadSkyBox();
@@ -77,8 +68,6 @@ function onTextureLoaded(texture) {
 ///////////
 // FLOOR //
 ///////////
-//var floorTexture = new THREE.ImageUtils.loadTexture( 'assets/textures/grass.png' );
-//var floorTexture = new THREE.ImageUtils.loadTexture( 'assets/textures/ground.png' );
 var floorTexture = loader.load( 'assets/textures/ground.png' );
 floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
 floorTexture.repeat.set( 2, 2 );
@@ -90,7 +79,7 @@ floor.rotation.x = Math.PI / 2; // 1.57
 scene.add(floor);
 
 ///////////
-// WALL //
+// WALLS //
 ///////////
 var wall_y_pos = -2.3;
 //var wallTexture = new THREE.ImageUtils.loadTexture( 'assets/textures/checkerboard.jpg' );
@@ -106,31 +95,32 @@ var wall2 = new THREE.Mesh(wallGeometry, wallMaterial);
 var wall3 = new THREE.Mesh(wallGeometry, wallMaterial);
 var wall4 = new THREE.Mesh(wallGeometry, wallMaterial);
 //floor.position.y = -0.5;
+
 /* Front Wall */
 wall1.position.x = 0;
 wall1.position.y = wall_y_pos;
-wall1.position.z = -15; //further away
+wall1.position.z = -15;
 var wall_rotation = 0.01;
-//wall1.rotation.x = wall_rotation;
 scene.add(wall1);
+
 /* Back Wall */
 wall2.position.x = 0;
 wall2.position.y = wall_y_pos;
-wall2.position.z = 15; //further away
-//wall2.rotation.x = wall_rotation;
+wall2.position.z = 15;
+
 scene.add(wall2);
+
 /* Left Side Wall */
 wall3.position.x = -15;
 wall3.position.y = wall_y_pos;
-wall3.position.z = 0; //further away
-//wall3.rotation.x = wall_rotation;
-//wall3.rotation.y = 2;
+wall3.position.z = 0;
 wall3.rotation.y = Math.PI / 2;
 scene.add(wall3);
+
 /* Right Side Wall */
 wall4.position.x = 15;
 wall4.position.y = wall_y_pos;
-wall4.position.z = 0; //further away
+wall4.position.z = 0;
 wall4.rotation.y = Math.PI / 2;
 scene.add(wall4);
 
@@ -142,10 +132,8 @@ var geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
 var material = new THREE.MeshNormalMaterial();
 var cube = new THREE.Mesh(geometry, material);
 var sign = new THREE.Mesh(geometry, material);
-//cube.position.set(0, controls.userHeight, -1);
-cube.position.set(0, 3.5, -1); //move cube higher
+cube.position.set(0, 3.5, -1);
 sign.position.set(-4.75, 0.25, -4.75); //left-right, top-down, forward-back
-
 //scene.add(cube);
 //scene.add(sign);
 
@@ -154,19 +142,16 @@ sign.position.set(-4.75, 0.25, -4.75); //left-right, top-down, forward-back
 var keyTexture = loader.load( 'assets/items/key-gold.png' );
 keyTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
 keyTexture.repeat.set( 1, 1 );
-// DoubleSide: render texture on both sides of mesh
 var keyMaterial = new THREE.MeshBasicMaterial( { map: keyTexture, side: THREE.DoubleSide } );
 var keyGeometry = new THREE.PlaneGeometry(2, 2, 1, 1);
 
 var keyMesh = new THREE.Mesh(keyGeometry, keyMaterial);
 keyMesh.position.x = 0;
-//keyMesh.position.y = -2.3;
 keyMesh.position.y = -2;
 keyMesh.position.z = -10;
 //keyMesh.rotation.x = Math.PI / 2; //ceiling
 //keyMesh.rotation.z = Math.PI / 2; //upside down
 //keyMesh.rotation.z = -3.14 / 2; //left flip
-
 scene.add(keyMesh);
 
 ///////////
@@ -230,12 +215,10 @@ function animate(timestamp) {
   var delta = Math.min(timestamp - lastRender, 500);
   lastRender = timestamp;
 
-  // Apply rotation to cube mesh
   cube.rotation.y += delta * 0.0006;
 
   renderNavi();
   
-  controls.update();
   vrControls.update();
   fpVrControls.update(timestamp);
 
@@ -252,9 +235,8 @@ function onResize(e) {
 }
 
 var vrDisplay;
-
-// Get the HMD, and if we're dealing with something that specifies stageParameters, rearrange the scene.
 function setupStage() {
+  //get the HMD and if we're dealing with something that specifies stageParameters, rearrange the scene
   navigator.getVRDisplays().then(function(displays) {
     if (displays.length > 0) {
       vrDisplay = displays[0];
@@ -275,10 +257,8 @@ function setStageDimensions(stage) {
   var geometry = new THREE.BoxGeometry(stage.sizeX, boxSize, stage.sizeZ);
   skybox = new THREE.Mesh(geometry, material);
 
-  // Place it on the floor.
   skybox.position.y = boxSize/2;
   scene.add(skybox);
 
-  // Place the cube in the middle of the scene, at user height.
-  cube.position.set(0, controls.userHeight, 0);
+  //cube.position.set(0, controls.userHeight, 0);
 }
