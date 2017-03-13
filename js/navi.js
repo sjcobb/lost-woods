@@ -53,7 +53,7 @@ var navi_sound = new THREE.PositionalAudio( listener );
 audioLoader.load( 'https://lost-woods.com/assets/navi/OOT_Navi_Listen1.wav', function( buffer ) {
   navi_sound.setBuffer( buffer );
   navi_sound.setRefDistance( 0.03 );
-  navi_sound.setVolume(100);
+  navi_sound.setVolume(90);
   //navi_sound.setLoop(true);
   //navi_sound.play();
 });
