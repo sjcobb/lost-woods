@@ -1,7 +1,6 @@
 /*
 *** INVENTORY JS ***
 */
-//console.log("inventory.js called");
 var hasKey = false;
 
 var itemsDiv = document.createElement("div");
@@ -15,7 +14,6 @@ document.getElementById("itemsDiv").innerHTML = itemsHTML;
 
 
 function updateInventory() {
-	//console.log("updateInventory() called");
 	hasKey = true;
 	keyNum = 1;
 

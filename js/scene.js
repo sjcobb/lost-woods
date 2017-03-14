@@ -13,7 +13,12 @@ document.body.appendChild(renderer.domElement);
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000);
 
-/*** VR Controls ***/
+var loader = new THREE.TextureLoader();
+loader.load('assets/textures/ground.png', onTextureLoaded);
+
+///////////////
+// CONTROLS
+///////////////
 var vrControls = new THREE.VRControls(camera);
 //vrControls.standing = true;
 var fpVrControls = new THREE.FirstPersonVRControls(camera, scene);
@@ -34,39 +39,14 @@ var manager = new WebVRManager(renderer, effect, params);
 window.addEventListener('resize', onResize, true);
 window.addEventListener('vrdisplaypresentchange', onResize, true);
 
-/*** LOAD TEXTURES ***/
-/*** SKYBOX: http://www.custommapmakers.org/skyboxes.php ***/
-function loadSkyBox() {
-  var materials = [
-    createMaterial( 'assets/skybox/night-right.jpg' ), // right
-    createMaterial( 'assets/skybox/night-left.jpg' ), // left
-    createMaterial( 'assets/skybox/night-up.jpg' ), // top
-    createMaterial( 'assets/skybox/night-down.jpg' ), // bottom
-    createMaterial( 'assets/skybox/night-back.jpg' ), // back
-    createMaterial( 'assets/skybox/night-front.jpg' )  // front
-  ];
-  var mesh = new THREE.Mesh( new THREE.BoxGeometry( 10000, 10000, 10000, 1, 1, 1 ), new THREE.MeshFaceMaterial( materials ) );
-  mesh.scale.set(-1,1,1); // Set the x scale to be -1, this will turn the cube inside out
-  scene.add( mesh );  
-}
- 
-function createMaterial( path ) {
-  var texture = loader.load(path);
-  var material = new THREE.MeshBasicMaterial( { map: texture, overdraw: 0.5 } );
-  return material; 
-}
-
-var boxSize = 40;
-var loader = new THREE.TextureLoader();
-loader.load('assets/textures/ground.png', onTextureLoaded);
-
-function onTextureLoaded(texture) {
-  loadSkyBox();
-  setupStage(); // For high end VR devices like Vive and Oculus, take into account the stage parameters provided.
-}
+///////////
+// SOUND
+///////////
+portalUpdate();
+songBuilder();
 
 ///////////
-// FLOOR //
+// FLOOR
 ///////////
 var floorTexture = loader.load( 'assets/textures/ground.png' );
 floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
@@ -79,7 +59,7 @@ floor.rotation.x = Math.PI / 2; // 1.57
 scene.add(floor);
 
 ///////////
-// WALLS //
+// WALLS
 ///////////
 var wall_y_pos = -2.3;
 //var wallTexture = new THREE.ImageUtils.loadTexture( 'assets/textures/checkerboard.jpg' );
@@ -125,7 +105,7 @@ wall4.rotation.y = Math.PI / 2;
 scene.add(wall4);
 
 /////////////
-// OBJECTS //
+// OBJECTS
 /////////////
 // Create 3D objects.
 var geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
@@ -149,19 +129,28 @@ var keyMesh = new THREE.Mesh(keyGeometry, keyMaterial);
 keyMesh.position.x = 0;
 keyMesh.position.y = -2;
 keyMesh.position.z = -10;
-//keyMesh.rotation.x = Math.PI / 2; //ceiling
-//keyMesh.rotation.z = Math.PI / 2; //upside down
-//keyMesh.rotation.z = -3.14 / 2; //left flip
-scene.add(keyMesh);
+//scene.add(keyMesh);
 
-///////////
-// SOUND //
-///////////
-portalUpdate();
-songBuilder();
+var spriteMap = loader.load( 'assets/items/key-gold.png' );
+var spriteMaterial = new THREE.SpriteMaterial( { map: spriteMap, color: 0xffffff } );
+var sprite = new THREE.Sprite( spriteMaterial );
+sprite.position.x = 0;
+sprite.position.y = -2;
+sprite.position.z = -10;
+scene.add( sprite );
+
+// Items
+/*sun = new Sun();
+sun.Create(0, 200, 0, scene, renderer);
+objects.push(sun);
+
+var water = new Water();
+water.Create(scene);
+objects.push(water);*/
+
 
 ///////////////////
-// LIGHT / MODEL //
+// LIGHT / MODEL
 ///////////////////
 var ambientLight = new THREE.AmbientLight( 0x444444 );
 scene.add( ambientLight );
@@ -173,43 +162,35 @@ scene.add( directionalLight );
 //var pointLight = new THREE.PointLight(0xffffff);
 //scene.add( pointLight );
 
-/*
-var onProgress = function ( xhr ) {
-  if ( xhr.lengthComputable ) {
-    var percentComplete = xhr.loaded / xhr.total * 100;
-    console.log( Math.round(percentComplete, 2) + '% downloaded' );
-  }
-};
+///////////
+// SKYBOX
+///////////
+function loadSkyBox() {
+  var materials = [
+    createMaterial( 'assets/skybox/night-right.jpg' ), // right
+    createMaterial( 'assets/skybox/night-left.jpg' ), // left
+    createMaterial( 'assets/skybox/night-up.jpg' ), // top
+    createMaterial( 'assets/skybox/night-down.jpg' ), // bottom
+    createMaterial( 'assets/skybox/night-back.jpg' ), // back
+    createMaterial( 'assets/skybox/night-front.jpg' )  // front
+  ];
+  var mesh = new THREE.Mesh( new THREE.BoxGeometry( 10000, 10000, 10000, 1, 1, 1 ), new THREE.MeshFaceMaterial( materials ) );
+  mesh.scale.set(-1,1,1); // Set the x scale to be -1, this will turn the cube inside out
+  scene.add( mesh );  
+}
+function createMaterial( path ) {
+  var texture = loader.load(path);
+  var material = new THREE.MeshBasicMaterial( { map: texture, overdraw: 0.5 } );
+  return material; 
+}
+function onTextureLoaded(texture) {
+  loadSkyBox();
+  setupStage(); // For high end VR devices like Vive and Oculus, take into account the stage parameters provided.
+}
 
-var onError = function ( xhr ) { };
-
-THREE.Loader.Handlers.add( /\.dds$/i, new THREE.DDSLoader() );
-
-var mtlLoader = new THREE.MTLLoader();
-mtlLoader.setPath( 'assets/models/ganondorf/' );
-mtlLoader.load( 'model.mtl', function( materials ) {
-
-  materials.preload();
-
-  var objLoader = new THREE.OBJLoader();
-  objLoader.setMaterials( materials );
-  objLoader.setPath( 'assets/models/ganondorf/' );
-  objLoader.load( 'model.obj', function ( object ) {
-
-    //object.scale.set(0.4, 0.4, 0.4);
-    object.scale.set(0.5, 0.5, 0.5);
-    //object.position.y = - 95;
-    //object.position.set(0, 0, -5);
-    object.position.set(0, -4.5, -5); //ganondorf on ground
-    //object.material.emissive = new THREE.Color( 0.2, 0.2, 0.2 );
-
-    //scene.add( object );
-
-  }, onProgress, onError );
-
-});*/
-
-// Request animation frame loop function
+////////////////
+// ANIMATION 
+////////////////
 var lastRender = 0;
 function animate(timestamp) {
   var delta = Math.min(timestamp - lastRender, 500);
@@ -249,16 +230,5 @@ function setupStage() {
 }
 
 function setStageDimensions(stage) {
-  // Make the skybox fit the stage.
-  var material = skybox.material;
-  scene.remove(skybox);
 
-  // Size the skybox according to the size of the actual stage.
-  var geometry = new THREE.BoxGeometry(stage.sizeX, boxSize, stage.sizeZ);
-  skybox = new THREE.Mesh(geometry, material);
-
-  skybox.position.y = boxSize/2;
-  scene.add(skybox);
-
-  //cube.position.set(0, controls.userHeight, 0);
 }
