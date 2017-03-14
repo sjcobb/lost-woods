@@ -1,4 +1,6 @@
 /*** NAVI ***/
+var navi;
+
 var x = 0, y = 0;
 
 var heartShape = new THREE.Shape();
