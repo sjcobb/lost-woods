@@ -15,7 +15,7 @@ function checkWoods(object) {
   if (camera.position.z < -8) {
     //console.log("key picked up");
     if (hasKey == false) {
-      scene.remove(keyMesh);
+      scene.remove(keySprite);
       updateInventory();
     }
   }

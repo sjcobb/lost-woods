@@ -117,27 +117,12 @@ sign.position.set(-4.75, 0.25, -4.75); //left-right, top-down, forward-back
 //scene.add(cube);
 //scene.add(sign);
 
-/* SILVER KEY */
-//var keyTexture = new THREE.ImageUtils.loadTexture( 'assets/items/key-silver.png' );
+/* BOSS KEY */
 var keyTexture = loader.load( 'assets/items/key-gold.png' );
-keyTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
-keyTexture.repeat.set( 1, 1 );
-var keyMaterial = new THREE.MeshBasicMaterial( { map: keyTexture, side: THREE.DoubleSide } );
-var keyGeometry = new THREE.PlaneGeometry(2, 2, 1, 1);
-
-var keyMesh = new THREE.Mesh(keyGeometry, keyMaterial);
-keyMesh.position.x = 0;
-keyMesh.position.y = -2;
-keyMesh.position.z = -10;
-//scene.add(keyMesh);
-
-var spriteMap = loader.load( 'assets/items/key-gold.png' );
-var spriteMaterial = new THREE.SpriteMaterial( { map: spriteMap, color: 0xffffff } );
-var sprite = new THREE.Sprite( spriteMaterial );
-sprite.position.x = 0;
-sprite.position.y = -2;
-sprite.position.z = -10;
-scene.add( sprite );
+var keyMaterial = new THREE.SpriteMaterial( { map: keyTexture, color: 0xffffff } );
+var keySprite = new THREE.Sprite( keyMaterial );
+keySprite.position.set(0, -2, -10);
+scene.add( keySprite );
 
 // Items
 /*sun = new Sun();
