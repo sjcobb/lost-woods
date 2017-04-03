@@ -1,5 +1,5 @@
 # The Lost Woods
-https://sjcobb.github.io/lost-woods/
+https://sjcobb.github.io/lost-woods
 
 The Lost Woods is a way to navigate between and explore WebVR demos auditorily. If you'd like to add a link to your site, email sjcobb.dev@gmail.com with a URL and audio file, or edit the portal object in [portal.js](https://github.com/sjcobb/lost-woods/blob/master/js/portal.js) and submit a pull request.
 
@@ -17,9 +17,9 @@ I also want to explore sharing gameplay elements between sites. For example, you
 - Add weapons (sword and bow)
 - Add collision detection with raycaster
 - Add ocarina, song building feature
-- Finish music maze (fire-temple)
-- Finish platform jumping game (ice-cavern)
-- Finish bow & arrow shooter (lake-hylia)
+- Finish music maze ([fire-temple](https://github.com/sjcobb/fire-temple))
+- Finish platform jumping game ([ice-cavern](https://github.com/sjcobb/ice-cavern))
+- Finish bow & arrow shooter ([lake-hylia](https://github.com/sjcobb/lake-hylia))
 - Improve Navi
 
 ## Issues
@@ -32,8 +32,8 @@ Shared inventory documentation to come. For now if you want an annoying fairy in
 Like most things on the web, there isn't one best way to go about creating a WebVR experience. Here are some suggestions for getting started.
 
 - [WebVR Boilerplate](https://github.com/borismus/webvr-boilerplate) - Starting point for cross-platform web-based VR experiences.
-- [A-Frame](https://github.com/aframevr/aframe) - A-Frame is a WebVR framework using three.js. It abstracts away a lot of the basic setup and uses an HTML-like syntax. I haven't personally used it on my demos, but it seems really cool.
+- [A-Frame](https://github.com/aframevr/aframe) - A-Frame is a WebVR framework using three.js. It abstracts away a lot of the basic setup and uses an entity-component-system pattern. 
 - [Three.js Examples](https://threejs.org/examples/) - Check them all out, especially the ones under webvr and misc.
 - [FirstPersonVRControls](https://github.com/brianpeiris/three-firstperson-vr-controls) - Helpful implementation of first-person controls.
-- [WebVR Starter Kit](https://github.com/povdocs/webvr-starter-kit) - I also haven't used this much, but it seems to have everything you'd need to get going.
+- [WebVR Starter Kit](https://github.com/povdocs/webvr-starter-kit) - I haven't used this much, but it has some interesting examples to learn from.
 - [Awesome WebVR](https://github.com/wizztjh/awesome-WebVR) - more links

@@ -35,7 +35,7 @@ function portalUpdate() {
     "lake_hylia" : {
       "link": "https://sjcobb.github.io/lake-hylia",
       "song": "assets/sounds/lake-hylia.mp3",
-      "volume": 70
+      "volume": 60
     },
     "bat_cave" : {
       "link": "https://ybinstock.github.io/BatCave",
@@ -55,6 +55,11 @@ function portalUpdate() {
     "plato" : {
       "link": "https://ybinstock.github.io/Platos-Cave",
       "song": "assets/sounds/plato-script.mp3",
+      "volume": 50
+    },
+    "outsidelands" : {
+      "link": "http://ngokevin.com/kframe/scenes/outsidelands",
+      "song": "assets/sounds/outsidelands.mp3",
       "volume": 50
     }
   };
