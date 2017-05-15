@@ -58,7 +58,7 @@ function portalUpdate() {
       "volume": 50
     },
     "outsidelands" : {
-      "link": "http://ngokevin.com/kframe/scenes/outsidelands",
+      "link": "https://ngokevin.github.io/aframe-magicavoxel-projects/outsidelands",
       "song": "assets/sounds/outsidelands.mp3",
       "volume": 50
     }
