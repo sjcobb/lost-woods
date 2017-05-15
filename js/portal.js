@@ -42,11 +42,11 @@ function portalUpdate() {
       "song": "assets/sounds/bats.mp3",
       "volume": 20
     },
-    "a_blast" : {
+    /*"a_blast" : {
       "link": "https://aframe.io/a-blast",
       "song": "assets/sounds/ablast.ogg",
       "volume": 20
-    },
+    },*/
     "aurora" : {
       "link": "https://aurora.jam3.net/#!/",
       "song": "assets/sounds/aurora.mp3",
