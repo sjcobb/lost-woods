@@ -87,16 +87,20 @@ function stopSongs() {
   if (song_reset == true) {
     console.log(top_sound.isPlaying);
     if (top_sound.isPlaying == true) {
-      top_sound.pause();
+      top_sound.stop();
+      //top_sound.pause();
     }
     if (right_sound.isPlaying == true) {
-      right_sound.pause();
+      right_sound.stop();
+      //right_sound.pause();
     }
     if (bottom_sound.isPlaying == true) {
-      bottom_sound.pause();
+      bottom_sound.stop();
+      //bottom_sound.pause();
     }
     if (left_sound.isPlaying == true) {
-      left_sound.pause();
+      left_sound.stop();
+      //left_sound.pause();
     }
     song_reset = false;
   }
