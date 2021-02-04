@@ -73,3 +73,10 @@ body {
 #m-back:hover {
 	border-bottom-color: #948816;
 }
+
+.github-button-container {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	z-index: 9;
+}
